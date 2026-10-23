@@ -12,6 +12,18 @@ function hostOf(href: string) {
   return href.replace(/^https?:\/\//, "").replace(/\/$/, "");
 }
 
+const web3Tags = new Set([
+  "Web3 builder",
+  "Smart contract auditing",
+  "DeFi liquidity and protocols",
+  "Solana ecosystem",
+  "On-chain analytics",
+]);
+
+function chipClass(label: string) {
+  return web3Tags.has(label) ? "chip chip-web3" : "chip";
+}
+
 export default function HomePage() {
   return (
     <>
@@ -39,7 +51,7 @@ export default function HomePage() {
           <p className="handle">{profile.handle}</p>
           <ul className="roles" aria-label="Roles">
             {profile.roles.map((role) => (
-              <li className="chip" key={role}>
+              <li className={chipClass(role)} key={role}>
                 {role}
               </li>
             ))}
@@ -95,7 +107,7 @@ export default function HomePage() {
                 <h3>{group.title}</h3>
                 <ul className="skill-list">
                   {group.items.map((item) => (
-                    <li className="chip" key={item}>
+                    <li className={chipClass(item)} key={item}>
                       {item}
                     </li>
                   ))}
