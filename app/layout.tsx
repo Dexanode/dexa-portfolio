@@ -25,7 +25,7 @@ const mono = JetBrains_Mono({
 });
 
 const description =
-  "0xDexa is a web3 builder, community manager, and content creator with about 5 years in crypto community work.";
+  "DEXA is a web3 builder, community manager, and content creator with about 5 years in crypto community work.";
 
 const personJsonLd = {
   "@context": "https://schema.org",
@@ -50,7 +50,7 @@ const personJsonLd = {
 };
 
 export const metadata: Metadata = {
-  title: "0xDexa",
+  title: "DEXA",
   description,
   authors: [{ name: profile.handle }],
 };

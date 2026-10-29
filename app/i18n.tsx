@@ -90,7 +90,7 @@ const en: Dict = {
   aboutKicker: "About",
   aboutTitle: "Community development in crypto and Web3.",
   aboutIntro:
-    "0xDexa works as a web3 builder, community manager, and content creator. The community work is about 5 years, covering moderation, community management, and technical customer support.",
+    "DEXA works as a web3 builder, community manager, and content creator. The community work is about 5 years, covering moderation, community management, and technical customer support.",
   skillsKicker: "Skills",
   skillsTitle: "What he works with",
   skillsIntro:
@@ -212,7 +212,7 @@ const en: Dict = {
   contactKicker: "Contact",
   contactTitle: "Let's build something together.",
   contactLabels: ["Email", "Telegram", "X", "GitHub"],
-  footerNote: "0xDexa — Jakarta, ID",
+  footerNote: "DEXA — Jakarta, ID",
   preloaderQuotes: [
     "Web3 builder",
     "Community manager",
@@ -248,7 +248,7 @@ const id: Dict = {
   aboutKicker: "Tentang",
   aboutTitle: "Pengembangan komunitas di crypto dan Web3.",
   aboutIntro:
-    "0xDexa adalah web3 builder, community manager, dan content creator. Pengalaman di komunitas sekitar 5 tahun, mencakup moderasi, manajemen komunitas, dan technical customer support.",
+    "DEXA adalah web3 builder, community manager, dan content creator. Pengalaman di komunitas sekitar 5 tahun, mencakup moderasi, manajemen komunitas, dan technical customer support.",
   skillsKicker: "Skill",
   skillsTitle: "Yang dia kerjakan",
   skillsIntro:
@@ -370,7 +370,7 @@ const id: Dict = {
   contactKicker: "Kontak",
   contactTitle: "Mari bangun sesuatu bersama.",
   contactLabels: ["Email", "Telegram", "X", "GitHub"],
-  footerNote: "0xDexa — Jakarta, ID",
+  footerNote: "DEXA — Jakarta, ID",
   preloaderQuotes: [
     "Web3 builder",
     "Community manager",

@@ -1,5 +1,5 @@
 export const profile = {
-  handle: "0xDexa",
+  handle: "DEXA",
   roles: ["Web3 builder", "Community manager", "Content creator"],
   summary:
     "Crypto and Web3 community manager and moderator, also called community development, with about 5 years in crypto community work.",

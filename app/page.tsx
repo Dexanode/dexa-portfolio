@@ -51,12 +51,12 @@ function SiteHeader() {
   return (
     <header className="header">
       <div className="header-inner">
-        <a className="brand" href="#hero" aria-label="0xDexa home">
+        <a className="brand" href="#hero" aria-label="DEXA home">
           <span className="brand-mark" aria-hidden="true">
-            0X
+            D
           </span>
           <span className="brand-text">
-            <strong>0XDEXA</strong>
+            <strong>DEXA</strong>
             <small>{t.brandRole}</small>
           </span>
         </a>
@@ -104,8 +104,8 @@ function SiteMain() {
     <main className="wrap">
       <section className="hero" id="hero" aria-labelledby="hero-title">
         <p className="role-line">{t.heroRoleLine}</p>
-        <h1 id="hero-title" className="hero-title" aria-label="0XDEXA">
-          {"0XDEXA".split("").map((c, i) => (
+        <h1 id="hero-title" className="hero-title" aria-label="DEXA">
+          {"DEXA".split("").map((c, i) => (
             <span className="char-mask" key={i} aria-hidden="true">
               <span className="char">{c}</span>
             </span>
