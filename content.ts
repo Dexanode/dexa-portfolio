@@ -111,19 +111,21 @@ export const ambassadors: Array<{
   logo?: string;
   /** White logos need inverting on the light theme to stay visible. */
   logoInvertLight?: boolean;
+  /** Black logos need inverting on the dark theme to stay visible. */
+  logoInvertDark?: boolean;
 }> = [
-  { name: "Pontem" },
-  { name: "Manta" },
-  { name: "PolkaDex" },
-  { name: "Duck Chain" },
-  { name: "Inery" },
+  { name: "Pontem", logo: "/logos/ambassador/pontem.svg", logoInvertDark: true },
+  { name: "Manta", logo: "/logos/ambassador/manta.svg" },
+  { name: "PolkaDex", logo: "/logos/ambassador/polkadex.svg" },
+  { name: "Duck Chain", logo: "/logos/ambassador/duckchain.svg" },
+  { name: "Inery", logo: "/logos/validators/inery.svg" },
   { name: "SOON SVM" },
   { name: "Coral Finance" },
   { name: "SuperFortune" },
   { name: "Wall App" },
   { name: "Bittime" },
-  { name: "Socrates" },
-  { name: "OKX" },
+  { name: "Socrates", logo: "/logos/ambassador/socrates.svg" },
+  { name: "OKX", logo: "/logos/ambassador/okx.svg" },
 ];
 
 /** Validator networks — logos supplied by the user via Google Drive (Empower excluded per request). */

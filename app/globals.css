@@ -1257,6 +1257,15 @@ html[data-theme="light"] .amb-logo img.invert-light {
   filter: grayscale(1) invert(1);
 }
 
+/* Black logos (e.g. Pontem) invert on the dark theme instead. */
+.amb-logo img.invert-dark {
+  filter: grayscale(1) invert(1);
+}
+
+html[data-theme="light"] .amb-logo img.invert-dark {
+  filter: grayscale(1);
+}
+
 /* ---------- validator logo wall ---------- */
 .val-grid {
   display: grid;

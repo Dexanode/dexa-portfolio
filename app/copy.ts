@@ -116,7 +116,7 @@ export const t = {
       org: "SiO2 Finance",
       dates: "June 2022 – September 2022",
       points: [
-        "Create an article about Si02 Finance and make a demo graphic",
+        "Create an article about SiO2 Finance and make a demo graphic",
         "Building community trust and running events",
         "Help answer all questions and receive feedback from the community",
       ],

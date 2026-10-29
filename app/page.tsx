@@ -219,7 +219,12 @@ function SiteMain() {
                       src={amb.logo}
                       alt=""
                       draggable={false}
-                      className={amb.logoInvertLight ? "invert-light" : ""}
+                      className={[
+                        amb.logoInvertLight ? "invert-light" : "",
+                        amb.logoInvertDark ? "invert-dark" : "",
+                      ]
+                        .filter(Boolean)
+                        .join(" ")}
                     />
                   ) : (
                     initials(amb.name)
