@@ -43,7 +43,13 @@ export default function Preloader() {
 
   return (
     <div className={`preloader${gone ? " preloader-gone" : ""}`} aria-hidden="true">
-      <p className="preloader-quote">{quote}</p>
+      <div className="preloader-inner">
+        <span className="preloader-logo">
+          <img src="/logos/dexa-logo-white.svg" alt="" className="mark-dark" draggable={false} />
+          <img src="/logos/dexa-logo-black.svg" alt="" className="mark-light" draggable={false} />
+        </span>
+        <p className="preloader-quote">{quote}</p>
+      </div>
       <p className="preloader-count">{count}</p>
     </div>
   );

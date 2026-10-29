@@ -79,7 +79,15 @@ export default function ProjectCarousel() {
                 className={`proj-visual ${VISUALS[i % VISUALS.length]}`}
                 aria-hidden="true"
               >
-                {project.logo ? (
+                {project.screenshot ? (
+                  <img
+                    className="proj-shot"
+                    src={project.screenshot}
+                    alt=""
+                    draggable={false}
+                    loading="lazy"
+                  />
+                ) : project.logo ? (
                   <img
                     className={`proj-mono proj-logo${
                       project.logoInvertLight ? " invert-light" : ""

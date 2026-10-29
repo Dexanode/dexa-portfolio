@@ -180,11 +180,14 @@ export const projects: Array<{
   logo?: string;
   /** White logos need inverting on the light theme to stay visible. */
   logoInvertLight?: boolean;
+  /** Real screenshot for the card visual (shown in full color). */
+  screenshot?: string;
 }> = [
   {
     name: "Strix Range",
     kind: "Own project",
     href: "https://strix-range.site",
+    screenshot: "/projects/strix.svg",
   },
   {
     name: "Sova Protocol",
@@ -192,11 +195,13 @@ export const projects: Array<{
     href: "https://sovaprotocol.xyz",
     logo: "/logos/sova.svg",
     logoInvertLight: true,
+    screenshot: "/projects/sova.svg",
   },
   {
     name: "Tumbuh",
     kind: "Client work",
     href: "http://tumbuh-six.vercel.app",
+    screenshot: "/projects/tumbuh.svg",
   },
 ];
 

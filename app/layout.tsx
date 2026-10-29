@@ -52,9 +52,20 @@ const personJsonLd = {
 };
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://dexa-portfolio.vercel.app"),
   title: "DEXA",
   description,
   authors: [{ name: profile.handle }],
+  openGraph: {
+    title: "DEXA — Web3 builder & blockchain developer",
+    description,
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "DEXA — Web3 builder & blockchain developer",
+    description,
+  },
 };
 
 export default function RootLayout({
