@@ -103,8 +103,6 @@ function SiteMain() {
           ))}
         </h1>
         <div className="hero-meta">
-          <span>{profile.handle}</span>
-          <span aria-hidden="true">—</span>
           <span>Jakarta, ID</span>
           <span aria-hidden="true">—</span>
           <span>
