@@ -5,7 +5,7 @@ export const t = {
   menuOpen: "Menu",
   menuClose: "Close",
   getInTouch: "GET IN TOUCH",
-  brandRole: "WEB3 BUILDER / COMMUNITY MANAGER",
+  brandRole: "WEB3 BUILDER / BLOCKCHAIN DEVELOPER",
   nav: [
     { href: "#about", label: "About" },
     { href: "#skills", label: "Skills" },
@@ -16,10 +16,10 @@ export const t = {
     { href: "#community", label: "Community" },
     { href: "#contact", label: "Contact" },
   ],
-  heroRoleLine: "Web3 builder & community manager. Anonymous by design.",
+  heroRoleLine: "Web3 builder & blockchain developer. Anonymous by design.",
   marquee: [
     "Web3 builder",
-    "Community manager",
+    "Blockchain developer",
     "Content creator",
     "Node validator",
     "Jakarta, ID",
@@ -152,7 +152,7 @@ export const t = {
   footerNote: "DEXA — Jakarta, ID",
   preloaderQuotes: [
     "Web3 builder",
-    "Community manager",
+    "Blockchain developer",
     "Content creator",
     "Anonymous by design",
   ],

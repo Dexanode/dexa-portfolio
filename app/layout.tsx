@@ -27,7 +27,7 @@ const mono = JetBrains_Mono({
 });
 
 const description =
-  "DEXA is a web3 builder, community manager, and content creator with about 5 years in crypto community work.";
+  "DEXA is a web3 builder and blockchain developer with about 5 years in crypto community work.";
 
 const personJsonLd = {
   "@context": "https://schema.org",
