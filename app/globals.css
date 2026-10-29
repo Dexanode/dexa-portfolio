@@ -939,7 +939,15 @@ a.row {
 
 /* White logos (e.g. Sova) turn black on the light theme to stay visible. */
 html[data-theme="light"] .proj-logo.invert-light {
-  filter: grayscale(1) invert(1);
+  filter: invert(1);
+}
+
+/* Logos show in full color on the light theme; dark stays monochrome. */
+html[data-theme="light"] .val-logo img,
+html[data-theme="light"] .amb-logo img,
+html[data-theme="light"] .exp-logo img,
+html[data-theme="light"] .proj-logo {
+  filter: none;
 }
 
 .proj-glow {
