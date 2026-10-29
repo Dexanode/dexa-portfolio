@@ -1274,60 +1274,92 @@ html[data-theme="light"] .amb-logo img.invert-dark {
   filter: grayscale(1);
 }
 
-/* ---------- validator logo wall ---------- */
-.val-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(104px, 1fr));
-  gap: 20px 12px;
-  list-style: none;
-  margin: 52px 0 0;
-  padding: 0;
+/* ---------- validator marquee ---------- */
+.val-marquee {
+  overflow: hidden;
+  margin-top: 52px;
+  padding: 6px 0;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
 }
 
-.val {
-  min-width: 0;
-  text-align: center;
+.val-marquee + .val-marquee {
+  margin-top: 20px;
 }
 
-.val-logo {
-  display: block;
+.val-track {
+  display: flex;
+  gap: 20px;
+  width: max-content;
+  animation: val-scroll 55s linear infinite;
+}
+
+.val-track.rev {
+  animation-direction: reverse;
+}
+
+.val-marquee:hover .val-track {
+  animation-play-state: paused;
+}
+
+@keyframes val-scroll {
+  to { transform: translateX(calc(-50% - 10px)); }
+}
+
+.val-marquee .val-logo {
+  position: relative;
+  flex: 0 0 auto;
+  width: clamp(96px, 10vw, 128px);
   aspect-ratio: 1;
   border: 1px solid var(--border);
   border-radius: 18px;
-  overflow: hidden;
   background: var(--surface);
+  cursor: default;
   transition: border-color 200ms ease, transform 200ms ease;
 }
 
-.val:hover .val-logo {
+.val-marquee .val-logo:hover {
   border-color: var(--muted);
   transform: translateY(-3px);
 }
 
-.val-logo img {
+.val-marquee .val-logo img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: 17px;
   filter: grayscale(1);
   user-select: none;
   -webkit-user-drag: none;
   pointer-events: none;
 }
 
-.val-name {
-  display: block;
-  margin-top: 10px;
+/* network name tooltip on hover */
+.val-marquee .val-logo::after {
+  content: attr(data-name);
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  background: var(--text);
+  color: var(--bg);
   font-family: var(--font-mono), monospace;
   font-size: 11px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--muted);
-  transition: color 200ms ease;
+  white-space: nowrap;
+  padding: 6px 12px;
+  border-radius: 8px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 200ms ease, transform 200ms ease;
+  z-index: 5;
 }
 
-.val:hover .val-name {
-  color: var(--text);
+.val-marquee .val-logo:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
 }
 
 .exp-org {

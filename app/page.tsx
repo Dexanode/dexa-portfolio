@@ -188,18 +188,26 @@ function SiteMain() {
             {t.valTitle}
           </h2>
         </Reveal>
-        <ul className="val-grid">
-          {validators.map((v, i) => (
-            <li className="val" key={v.name}>
-              <Reveal delay={(i % 7) * 50}>
-                <span className="val-logo" aria-hidden="true">
-                  <img src={v.logo} alt="" draggable={false} loading="lazy" />
+        <Reveal delay={120}>
+          <div className="val-marquee" role="list" aria-label={`${t.valTitle} — row 1`}>
+            <div className="val-track">
+              {[...validators.slice(0, 14), ...validators.slice(0, 14)].map((v, i) => (
+                <span className="val-logo" role="listitem" key={`a-${i}`} data-name={v.name}>
+                  <img src={v.logo} alt={`${v.name} logo`} draggable={false} loading="lazy" />
                 </span>
-                <span className="val-name">{v.name}</span>
-              </Reveal>
-            </li>
-          ))}
-        </ul>
+              ))}
+            </div>
+          </div>
+          <div className="val-marquee" role="list" aria-label={`${t.valTitle} — row 2`}>
+            <div className="val-track rev">
+              {[...validators.slice(14), ...validators.slice(14)].map((v, i) => (
+                <span className="val-logo" role="listitem" key={`b-${i}`} data-name={v.name}>
+                  <img src={v.logo} alt={`${v.name} logo`} draggable={false} loading="lazy" />
+                </span>
+              ))}
+            </div>
+          </div>
+        </Reveal>
       </section>
 
       <section id="ambassador" aria-labelledby="ambassador-title">
