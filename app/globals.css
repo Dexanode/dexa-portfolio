@@ -1076,9 +1076,6 @@ a.row {
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
   padding-bottom: 4px;
-  padding-inline-start: 24px;
-  margin-inline: -16px;
-  padding-inline-end: 24px;
 }
 
 .skill-track::-webkit-scrollbar {
@@ -1142,22 +1139,6 @@ a.row {
 
 .skill-cta {
   align-self: flex-start;
-}
-
-.skill-nav {
-  padding-inline-start: 24px;
-}
-
-@media (min-width: 768px) {
-  .skill-track {
-    margin-inline: -32px;
-    padding-inline-start: clamp(32px, 28vw, 420px);
-    padding-inline-end: 48px;
-  }
-
-  .skill-nav {
-    padding-inline-start: clamp(32px, 28vw, 420px);
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
