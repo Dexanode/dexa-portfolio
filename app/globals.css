@@ -465,6 +465,19 @@ main section + section {
   letter-spacing: -0.045em;
 }
 
+.char-mask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+}
+
+.char {
+  display: inline-block;
+  will-change: transform;
+}
+
+/* ---------- marquee ---------- */
+
 .hero-meta {
   display: flex;
   flex-wrap: wrap;
@@ -480,37 +493,6 @@ main section + section {
 .hero-meta span:nth-child(odd) {
   color: var(--text);
 }
-
-/* hero entrance, gated on preloader finishing */
-
-html.js .hero > * {
-  opacity: 0;
-  transform: translateY(26px);
-}
-
-html.js.is-ready .hero > * {
-  opacity: 1;
-  transform: none;
-  transition: opacity 0.8s ease, transform 0.85s var(--ease-out);
-}
-
-html.js.is-ready .hero > *:nth-child(1) {
-  transition-delay: 0.05s;
-}
-
-html.js.is-ready .hero > *:nth-child(2) {
-  transition-delay: 0.14s;
-}
-
-html.js.is-ready .hero > *:nth-child(3) {
-  transition-delay: 0.24s;
-}
-
-html.js.is-ready .hero > *:nth-child(4) {
-  transition-delay: 0.36s;
-}
-
-/* ---------- marquee ---------- */
 
 .marquee {
   overflow: hidden;
@@ -565,17 +547,6 @@ html.js.is-ready .hero > *:nth-child(4) {
   text-transform: uppercase;
 }
 
-.reveal .kicker {
-  letter-spacing: 0.42em;
-  opacity: 0;
-  transition: letter-spacing 0.9s var(--ease-out), opacity 0.9s ease;
-}
-
-.reveal.is-visible .kicker {
-  letter-spacing: 0.24em;
-  opacity: 1;
-}
-
 .kinetic {
   font-size: clamp(36px, 5.5vw, 60px);
   font-weight: 600;
@@ -600,18 +571,10 @@ html.js.is-ready .hero > *:nth-child(4) {
   color: var(--muted);
 }
 
-/* ---------- scroll reveal ---------- */
+/* ---------- scroll reveal (driven by GSAP) ---------- */
 
 .reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.75s ease, transform 0.8s var(--ease-out);
   will-change: opacity, transform;
-}
-
-.reveal.is-visible {
-  opacity: 1;
-  transform: none;
 }
 
 /* ---------- editorial rows ---------- */
@@ -1075,16 +1038,9 @@ a.row {
   }
 }
 
-@media (prefers-reduced-motion: reduce) {  html {
+@media (prefers-reduced-motion: reduce) {
+  html {
     scroll-behavior: auto;
-  }
-
-  html.js .hero > *,
-  .reveal,
-  .reveal .kicker {
-    opacity: 1;
-    transform: none;
-    letter-spacing: 0.24em;
   }
 
   .marquee-track {

@@ -1,7 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import gsap from "gsap";
 import { useLang } from "./i18n";
+import { markReady } from "./hero-entrance";
 
 export default function Preloader() {
   const [count, setCount] = useState(0);
@@ -13,27 +15,27 @@ export default function Preloader() {
   useEffect(() => {
     document.documentElement.classList.add("js");
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      document.documentElement.classList.add("is-ready");
+      markReady();
       setRemoved(true);
       return;
     }
-    const start = performance.now();
-    const duration = 1700;
-    let raf = 0;
-    const tick = (now: number) => {
-      const p = Math.min(1, (now - start) / duration);
-      const eased = 1 - Math.pow(1 - p, 3);
-      setCount(Math.round(eased * 100));
-      if (p < 1) {
-        raf = requestAnimationFrame(tick);
-      } else {
+    // Counter runs on a GSAP tween; onUpdate drives the React state.
+    const counter = { value: 0 };
+    const tween = gsap.to(counter, {
+      value: 100,
+      duration: 1.7,
+      ease: "power2.inOut",
+      onUpdate: () => setCount(Math.round(counter.value)),
+      onComplete: () => {
+        setCount(100);
         setGone(true);
-        document.documentElement.classList.add("is-ready");
+        markReady();
         window.setTimeout(() => setRemoved(true), 700);
-      }
+      },
+    });
+    return () => {
+      tween.kill();
     };
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
   }, []);
 
   if (removed) return null;

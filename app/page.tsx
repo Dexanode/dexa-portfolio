@@ -2,6 +2,7 @@
 
 import { ambassadors, profile } from "@/content";
 import { LangProvider, useLang, type Lang } from "./i18n";
+import HeroEntrance from "./hero-entrance";
 import LiveClock from "./live-clock";
 import MenuOverlay from "./menu-overlay";
 import Preloader from "./preloader";
@@ -97,8 +98,12 @@ function SiteMain() {
     <main className="wrap">
       <section className="hero" id="hero" aria-labelledby="hero-title">
         <p className="role-line">{t.heroRoleLine}</p>
-        <h1 id="hero-title" className="hero-title">
-          0XDEXA
+        <h1 id="hero-title" className="hero-title" aria-label="0XDEXA">
+          {"0XDEXA".split("").map((c, i) => (
+            <span className="char-mask" key={i} aria-hidden="true">
+              <span className="char">{c}</span>
+            </span>
+          ))}
         </h1>
         <div className="hero-meta">
           <span>{profile.handle}</span>
@@ -361,6 +366,7 @@ export default function HomePage() {
   return (
     <LangProvider>
       <Preloader />
+      <HeroEntrance />
       <div className="grain" aria-hidden="true" />
       <a className="skip" href="#about">
         {t.skip}
