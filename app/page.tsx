@@ -11,6 +11,7 @@ import Preloader from "./preloader";
 import ProjectCarousel from "./project-carousel";
 import Reveal from "./reveal";
 import ScrollProgress from "./scroll-progress";
+import SkillCarousel from "./skill-carousel";
 
 function initials(name: string) {
   return name
@@ -180,23 +181,14 @@ function SiteMain() {
       <section id="skills" aria-labelledby="skills-title">
         <Reveal>
           <p className="kicker">{t.skillsKicker}</p>
-          <h2 id="skills-title" className="kinetic">
+          <h2 id="skills-title" className="skills-heading">
             {t.skillsTitle}
           </h2>
         </Reveal>
-        <div className="rows">
-          {t.skillGroups.map((group, i) => (
-            <Reveal key={group.title} delay={i * 70}>
-              <div className="row">
-                <span className="row-index">{indexOf(i)}</span>
-                <div>
-                  <h3 className="row-title">{group.title}</h3>
-                  <p className="row-sub">{group.items.join("  ·  ")}</p>
-                </div>
-              </div>
-            </Reveal>
-          ))}
-        </div>
+        <Reveal delay={120}>
+          <p className="section-intro skills-intro">{t.skillsIntro}</p>
+        </Reveal>
+        <SkillCarousel />
       </section>
 
       <section id="experience" aria-labelledby="experience-title">

@@ -35,10 +35,19 @@ export default function MarqueeFx() {
       },
     });
 
+    // Pause on hover, per the marquee-loop skill.
+    const marquee = document.querySelector(".marquee");
+    const onEnter = () => tween.pause();
+    const onLeave = () => tween.play();
+    marquee?.addEventListener("mouseenter", onEnter);
+    marquee?.addEventListener("mouseleave", onLeave);
+
     return () => {
       st.kill();
       tween.kill();
       window.clearTimeout(reset);
+      marquee?.removeEventListener("mouseenter", onEnter);
+      marquee?.removeEventListener("mouseleave", onLeave);
     };
   }, []);
 

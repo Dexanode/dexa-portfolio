@@ -13,6 +13,7 @@ export type ExperienceItem = {
 
 export type SkillGroup = {
   title: string;
+  blurb: string;
   items: string[];
 };
 
@@ -35,6 +36,8 @@ export type Dict = {
   aboutIntro: string;
   skillsKicker: string;
   skillsTitle: string;
+  skillsIntro: string;
+  findOutMore: string;
   skillGroups: SkillGroup[];
   expKicker: string;
   expTitle: string;
@@ -90,9 +93,14 @@ const en: Dict = {
     "0xDexa works as a web3 builder, community manager, and content creator. The community work is about 5 years, covering moderation, community management, and technical customer support.",
   skillsKicker: "Skills",
   skillsTitle: "What he works with",
+  skillsIntro:
+    "A practical toolkit built over five years in crypto — from code to community.",
+  findOutMore: "FIND OUT MORE",
   skillGroups: [
     {
       title: "Programming and development",
+      blurb:
+        "Rust and Python development, auto-trading bots, and smart contract auditing — built for the on-chain world.",
       items: [
         "Rust",
         "Python",
@@ -102,6 +110,8 @@ const en: Dict = {
     },
     {
       title: "Trading and DeFi",
+      blurb:
+        "DeFi liquidity, the Solana ecosystem, on-chain analytics, and disciplined risk management.",
       items: [
         "DeFi liquidity and protocols",
         "Solana ecosystem",
@@ -111,6 +121,8 @@ const en: Dict = {
     },
     {
       title: "Community and growth",
+      blurb:
+        "Community marketing, outreach, and content planning — growing communities that stay.",
       items: [
         "Community marketing",
         "Outreach",
@@ -239,9 +251,14 @@ const id: Dict = {
     "0xDexa adalah web3 builder, community manager, dan content creator. Pengalaman di komunitas sekitar 5 tahun, mencakup moderasi, manajemen komunitas, dan technical customer support.",
   skillsKicker: "Skill",
   skillsTitle: "Yang dia kerjakan",
+  skillsIntro:
+    "Toolkit praktis yang dibangun selama lima tahun di crypto — dari code sampai komunitas.",
+  findOutMore: "SELENGKAPNYA",
   skillGroups: [
     {
       title: "Pemrograman dan pengembangan",
+      blurb:
+        "Pengembangan Rust dan Python, auto-trading bot, dan audit smart contract — dibangun untuk dunia on-chain.",
       items: [
         "Rust",
         "Python",
@@ -251,6 +268,8 @@ const id: Dict = {
     },
     {
       title: "Trading dan DeFi",
+      blurb:
+        "Likuiditas DeFi, ekosistem Solana, analitik on-chain, dan manajemen risiko yang disiplin.",
       items: [
         "DeFi liquidity and protocols",
         "Solana ecosystem",
@@ -260,6 +279,8 @@ const id: Dict = {
     },
     {
       title: "Komunitas dan pertumbuhan",
+      blurb:
+        "Community marketing, outreach, dan content planning — menumbuhkan komunitas yang bertahan.",
       items: [
         "Community marketing",
         "Outreach",
