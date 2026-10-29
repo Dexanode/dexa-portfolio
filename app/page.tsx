@@ -12,6 +12,7 @@ import ProjectCarousel from "./project-carousel";
 import Reveal from "./reveal";
 import ScrollProgress from "./scroll-progress";
 import SkillCarousel from "./skill-carousel";
+import ExperienceAccordion from "./experience-accordion";
 
 function initials(name: string) {
   return name
@@ -198,26 +199,7 @@ function SiteMain() {
             {t.expTitle}
           </h2>
         </Reveal>
-        <div className="rows">
-          {t.experience.map((job, i) => (
-            <Reveal key={`${job.org}-${job.dates}`} delay={i * 60}>
-              <div className="row">
-                <span className="row-index">{indexOf(i)}</span>
-                <div>
-                  <h3 className="row-title">{job.org}</h3>
-                  <p className="row-sub">
-                    {job.role} — {job.dates}
-                  </p>
-                  <ul className="row-points">
-                    {job.points.map((point) => (
-                      <li key={point}>{point}</li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </Reveal>
-          ))}
-        </div>
+        <ExperienceAccordion />
       </section>
 
       <section id="validator" aria-labelledby="validator-title">
