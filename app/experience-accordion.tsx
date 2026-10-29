@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useLang } from "./i18n";
+import { t } from "./copy";
 import Reveal from "./reveal";
 
 function indexOf(i: number) {
@@ -9,7 +9,6 @@ function indexOf(i: number) {
 }
 
 export default function ExperienceAccordion() {
-  const { t } = useLang();
   const [openIndex, setOpenIndex] = useState(0);
   const jobs = t.experience;
 

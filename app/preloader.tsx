@@ -2,14 +2,13 @@
 
 import { useEffect, useState } from "react";
 import gsap from "gsap";
-import { useLang } from "./i18n";
+import { t } from "./copy";
 import { markReady } from "./hero-entrance";
 
 export default function Preloader() {
   const [count, setCount] = useState(0);
   const [gone, setGone] = useState(false);
   const [removed, setRemoved] = useState(false);
-  const { t } = useLang();
   const QUOTES = t.preloaderQuotes;
 
   useEffect(() => {

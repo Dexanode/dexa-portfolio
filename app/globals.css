@@ -1,17 +1,45 @@
 :root {
-  --bg: #0a0908;
-  --surface: #141210;
-  --border: #26221e;
-  --text: #f3ede4;
-  --muted: #9a9187;
-  --primary: #ff9f6e;
-  --accent: #7c6cff;
-  --on-primary: #0a0908;
+  --bg: #0a0a0a;
+  --surface: #161616;
+  --border: #2a2a2a;
+  --text: #f5f5f5;
+  --muted: #a3a3a3;
+  --primary: #f5f5f5;
+  --accent: #8a8a8a;
+  --on-primary: #0a0a0a;
+  --glow: rgb(255 255 255 / 0.07);
   --radius-card: 16px;
   --radius-pill: 999px;
   --max: 1200px;
   --ease-out: cubic-bezier(0.22, 0.61, 0.36, 1);
   color-scheme: dark;
+}
+
+html[data-theme="light"] {
+  --bg: #ffffff;
+  --surface: #f3f4f6;
+  --border: #d1d5db;
+  --text: #111827;
+  --muted: #4b5563;
+  --primary: #111827;
+  --accent: #6b7280;
+  --on-primary: #ffffff;
+  --glow: rgb(0 0 0 / 0.05);
+  color-scheme: light;
+}
+
+::selection {
+  background: var(--text);
+  color: var(--bg);
+}
+
+/* Smooth cross-fade while the theme toggles (added/removed by theme.tsx). */
+.theme-anim,
+.theme-anim *,
+.theme-anim *::before,
+.theme-anim *::after {
+  transition: background-color 0.35s ease, border-color 0.35s ease,
+    color 0.35s ease !important;
 }
 
 * {
@@ -136,7 +164,7 @@ a {
   position: sticky;
   top: 0;
   z-index: 60;
-  background: rgb(10 9 8 / 82%);
+  background: color-mix(in srgb, var(--bg) 82%, transparent);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
@@ -181,8 +209,8 @@ a {
   width: 46px;
   height: 46px;
   border-radius: 14px;
-  background: linear-gradient(135deg, #ffb08a 0%, #ff9f6e 100%);
-  color: var(--on-primary);
+  background: var(--text);
+  color: var(--bg);
   font-family: var(--font-display), sans-serif;
   font-size: 19px;
   font-weight: 700;
@@ -223,50 +251,43 @@ a {
   padding: 7px 7px 7px 18px;
   border: 1px solid var(--border);
   border-radius: var(--radius-pill);
-  background: rgb(20 18 16 / 65%);
+  background: color-mix(in srgb, var(--bg) 65%, transparent);
 }
 
-.lang-toggle {
+.theme-toggle {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 0;
-  border: none;
-  background: none;
-  color: var(--muted);
-  font-family: var(--font-mono), monospace;
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  cursor: pointer;
-}
-
-.lang-toggle .active {
-  color: var(--text);
-}
-
-.lang-switch {
-  position: relative;
+  justify-content: center;
   width: 38px;
-  height: 20px;
+  height: 38px;
   border: 1px solid var(--border);
-  border-radius: var(--radius-pill);
-  background: var(--surface);
-}
-
-.lang-knob {
-  position: absolute;
-  top: 2px;
-  left: 2px;
-  width: 14px;
-  height: 14px;
   border-radius: 50%;
-  background: var(--text);
-  transition: transform 250ms var(--ease-out);
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+  transition: border-color 200ms ease, color 200ms ease, transform 300ms var(--ease-out);
 }
 
-.lang-toggle[data-lang="id"] .lang-knob {
-  transform: translateX(18px);
+.theme-toggle:hover {
+  border-color: var(--muted);
+  transform: rotate(20deg);
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.theme-icon {
+  display: block;
+  width: 18px;
+  height: 18px;
+}
+
+.theme-icon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 .touch-btn {
@@ -275,8 +296,8 @@ a {
   gap: 12px;
   padding: 6px 6px 6px 18px;
   border-radius: var(--radius-pill);
-  background: linear-gradient(180deg, #ffb08a 0%, #ff9f6e 100%);
-  color: var(--on-primary);
+  background: var(--text);
+  color: var(--bg);
   font-family: var(--font-display), sans-serif;
   font-size: 13px;
   font-weight: 700;
@@ -287,7 +308,7 @@ a {
 
 .touch-btn:hover {
   transform: translateY(-1px);
-  filter: brightness(1.06);
+  filter: brightness(1.08);
 }
 
 .touch-arrow {
@@ -329,7 +350,7 @@ a {
   flex-direction: column;
   justify-content: center;
   padding: 0 8vw;
-  background: rgb(10 9 8 / 96%);
+  background: color-mix(in srgb, var(--bg) 96%, transparent);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   opacity: 0;
@@ -412,10 +433,8 @@ main section + section {
   pointer-events: none;
   background: radial-gradient(
     ellipse 46% 50% at 50% 42%,
-    rgb(255 159 110 / 12%) 0%,
-    rgb(124 108 255 / 12%) 32%,
-    rgb(124 108 255 / 5%) 58%,
-    transparent 88%
+    var(--glow) 0%,
+    transparent 70%
   );
 }
 
@@ -676,7 +695,7 @@ a.row {
 }
 
 .amb:hover {
-  border-color: rgb(255 159 110 / 40%);
+  border-color: color-mix(in srgb, var(--text) 40%, transparent);
   transform: translateY(-3px);
 }
 
@@ -696,12 +715,8 @@ a.row {
   height: 46px;
   border: 1px solid var(--border);
   border-radius: 12px;
-  background: linear-gradient(
-    135deg,
-    rgb(255 159 110 / 20%) 0%,
-    rgb(124 108 255 / 20%) 100%
-  );
-  color: var(--primary);
+  background: color-mix(in srgb, var(--text) 8%, transparent);
+  color: var(--text);
   font-family: var(--font-display), sans-serif;
   font-size: 15px;
   font-weight: 700;
@@ -744,12 +759,12 @@ a.row {
 }
 
 .btn-primary {
-  background: linear-gradient(180deg, #ffb08a 0%, #ff9f6e 100%);
-  color: var(--on-primary);
+  background: var(--text);
+  color: var(--bg);
 }
 
 .btn-primary:hover {
-  background: linear-gradient(180deg, #ffc4a6 0%, #ffab80 100%);
+  opacity: 0.85;
 }
 
 .btn-ghost {
@@ -759,8 +774,8 @@ a.row {
 }
 
 .btn-ghost:hover {
-  border-color: rgb(255 159 110 / 40%);
-  color: var(--primary);
+  border-color: color-mix(in srgb, var(--text) 40%, transparent);
+  color: var(--text);
 }
 
 /* ---------- footer ---------- */
@@ -924,30 +939,30 @@ a.row {
 .proj-visual-a {
   background: linear-gradient(
     135deg,
-    rgb(255 159 110 / 0.28) 0%,
-    rgb(124 108 255 / 0.22) 55%,
-    rgb(20 18 16 / 0) 100%
+    color-mix(in srgb, var(--text) 22%, transparent) 0%,
+    color-mix(in srgb, var(--text) 10%, transparent) 55%,
+    transparent 100%
   );
 }
 
 .proj-visual-b {
   background: linear-gradient(
     225deg,
-    rgb(124 108 255 / 0.3) 0%,
-    rgb(255 159 110 / 0.16) 60%,
-    rgb(20 18 16 / 0) 100%
+    color-mix(in srgb, var(--text) 24%, transparent) 0%,
+    color-mix(in srgb, var(--text) 8%, transparent) 60%,
+    transparent 100%
   );
 }
 
 .proj-visual-c {
   background: radial-gradient(
       ellipse 80% 70% at 30% 20%,
-      rgb(255 159 110 / 0.22) 0%,
+      color-mix(in srgb, var(--text) 18%, transparent) 0%,
       transparent 60%
     ),
     radial-gradient(
       ellipse 80% 70% at 75% 80%,
-      rgb(124 108 255 / 0.24) 0%,
+      color-mix(in srgb, var(--text) 12%, transparent) 0%,
       transparent 60%
     );
 }
@@ -1005,8 +1020,8 @@ a.row {
 }
 
 .proj-nav button:hover:not(:disabled) {
-  border-color: rgb(255 159 110 / 50%);
-  color: var(--primary);
+  border-color: color-mix(in srgb, var(--text) 50%, transparent);
+  color: var(--text);
 }
 
 .proj-nav button:disabled {
@@ -1039,7 +1054,7 @@ a.row {
   right: 0;
   height: 3px;
   z-index: 80;
-  background: linear-gradient(90deg, #ffb08a 0%, #ff9f6e 45%, #7c6cff 100%);
+  background: linear-gradient(90deg, var(--muted), var(--text));
   transform: scaleX(0);
   transform-origin: 0 50%;
 }
@@ -1214,7 +1229,7 @@ a.row {
 
 .exp-item.open .exp-icon {
   color: var(--primary);
-  border-color: rgb(255 159 110 / 50%);
+  border-color: color-mix(in srgb, var(--text) 50%, transparent);
   transform: rotate(90deg);
 }
 

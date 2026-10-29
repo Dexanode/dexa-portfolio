@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import Magnetic from "./magnetic";
-import { useLang } from "./i18n";
+import { t } from "./copy";
 import Reveal from "./reveal";
 
 function CodeIcon() {
@@ -39,7 +39,6 @@ function UsersIcon() {
 const ICONS = [CodeIcon, ChartIcon, UsersIcon];
 
 export default function SkillCarousel() {
-  const { t } = useLang();
   const trackRef = useRef<HTMLDivElement>(null);
   const [index, setIndex] = useState(0);
 

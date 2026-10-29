@@ -1,7 +1,7 @@
 "use client";
 
 import { ambassadors, profile } from "@/content";
-import { LangProvider, useLang, type Lang } from "./i18n";
+import { t } from "./copy";
 import HeroEntrance from "./hero-entrance";
 import LiveClock from "./live-clock";
 import Magnetic from "./magnetic";
@@ -12,6 +12,7 @@ import ProjectCarousel from "./project-carousel";
 import Reveal from "./reveal";
 import ScrollProgress from "./scroll-progress";
 import SkillCarousel from "./skill-carousel";
+import ThemeToggle from "./theme-toggle";
 import ExperienceAccordion from "./experience-accordion";
 
 function initials(name: string) {
@@ -27,28 +28,7 @@ function indexOf(i: number) {
   return String(i + 1).padStart(2, "0");
 }
 
-function LangToggle() {
-  const { lang, setLang } = useLang();
-  const next: Lang = lang === "en" ? "id" : "en";
-  return (
-    <button
-      type="button"
-      className="lang-toggle"
-      data-lang={lang}
-      onClick={() => setLang(next)}
-      aria-label={lang === "en" ? "Switch to Indonesian" : "Switch to English"}
-    >
-      <span className={lang === "en" ? "active" : ""}>EN</span>
-      <span className="lang-switch" aria-hidden="true">
-        <span className="lang-knob" />
-      </span>
-      <span className={lang === "id" ? "active" : ""}>ID</span>
-    </button>
-  );
-}
-
 function SiteHeader() {
-  const { t } = useLang();
   return (
     <header className="header">
       <div className="header-inner">
@@ -63,7 +43,7 @@ function SiteHeader() {
         </a>
         <div className="header-controls">
           <div className="control-pill">
-            <LangToggle />
+            <ThemeToggle />
             <Magnetic>
               <a className="touch-btn" href="#contact">
                 {t.getInTouch}
@@ -81,7 +61,6 @@ function SiteHeader() {
 }
 
 function SiteMain() {
-  const { t } = useLang();
   const contactRows = [
     {
       label: t.contactLabels[0],
@@ -318,7 +297,6 @@ function SiteMain() {
 }
 
 function SiteFooter() {
-  const { t } = useLang();
   return (
     <footer className="footer">
       <div className="footer-inner">
@@ -341,9 +319,8 @@ function SiteFooter() {
 }
 
 export default function HomePage() {
-  const { t } = useLang();
   return (
-    <LangProvider>
+    <>
       <Preloader />
       <HeroEntrance />
       <ScrollProgress />
@@ -355,6 +332,6 @@ export default function HomePage() {
       <SiteHeader />
       <SiteMain />
       <SiteFooter />
-    </LangProvider>
+    </>
   );
 }

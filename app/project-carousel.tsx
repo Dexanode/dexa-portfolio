@@ -4,7 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { projects } from "@/content";
 import Magnetic from "./magnetic";
-import { useLang } from "./i18n";
+import { t } from "./copy";
 import Reveal from "./reveal";
 
 function hostOf(href: string) {
@@ -23,7 +23,6 @@ function initials(name: string) {
 const VISUALS = ["proj-visual-a", "proj-visual-b", "proj-visual-c"];
 
 export default function ProjectCarousel() {
-  const { t } = useLang();
   const trackRef = useRef<HTMLDivElement>(null);
   const [index, setIndex] = useState(0);
 

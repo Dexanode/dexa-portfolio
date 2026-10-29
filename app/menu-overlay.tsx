@@ -3,11 +3,10 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { profile } from "@/content";
-import { useLang } from "./i18n";
+import { t } from "./copy";
 
 export default function MenuOverlay() {
   const [open, setOpen] = useState(false);
-  const { t } = useLang();
   const rootRef = useRef<HTMLDivElement>(null);
   const tlRef = useRef<gsap.core.Timeline | null>(null);
   const reduceRef = useRef(false);
