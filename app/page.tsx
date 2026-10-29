@@ -14,7 +14,7 @@ import Preloader from "./preloader";
 import ProjectCarousel from "./project-carousel";
 import Reveal from "./reveal";
 import ScrollProgress from "./scroll-progress";
-import SkillCarousel from "./skill-carousel";
+import SkillMarquee from "./skill-marquee";
 import SoundToggle from "./sound-toggle";
 import ThemeToggle from "./theme-toggle";
 import ExperienceAccordion from "./experience-accordion";
@@ -148,7 +148,7 @@ function SiteMain() {
         <Reveal delay={120}>
           <p className="section-intro skills-intro">{t.skillsIntro}</p>
         </Reveal>
-        <SkillCarousel />
+        <SkillMarquee />
       </section>
 
       <section id="experience" aria-labelledby="experience-title">
