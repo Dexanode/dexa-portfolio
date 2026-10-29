@@ -1,6 +1,6 @@
 # dexa-portfolio
 
-Personal portfolio for Chaerul Oemar Kusnaedi (0xDexa). It is a static [Next.js](https://nextjs.org) site using the App Router.
+Personal portfolio for 0xDexa. It is a static [Next.js](https://nextjs.org) site using the App Router.
 
 ## Develop
 

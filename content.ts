@@ -1,5 +1,4 @@
 export const profile = {
-  name: "Chaerul Oemar Kusnaedi",
   handle: "0xDexa",
   roles: ["Web3 builder", "Community manager", "Content creator"],
   summary:
@@ -139,18 +138,20 @@ export const projects = [
   },
 ] as const;
 
-export const education = {
-  field: "Computer Science",
-  school: "Universitas Pakuan",
-} as const;
+export const validatorExperience: Array<{
+  name: string;
+  network: string;
+  since: string;
+  points: string[];
+}> = [];
 
 export const nav = [
   { href: "#about", label: "About" },
   { href: "#skills", label: "Skills" },
   { href: "#experience", label: "Experience" },
+  { href: "#validator", label: "Node Validator" },
   { href: "#ambassador", label: "Ambassador" },
   { href: "#projects", label: "Projects" },
-  { href: "#education", label: "Education" },
   { href: "#community", label: "Community" },
   { href: "#contact", label: "Contact" },
 ] as const;

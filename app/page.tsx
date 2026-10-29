@@ -1,12 +1,12 @@
 import {
   ambassadors,
-  education,
-  experience,
   nav,
   profile,
   projects,
   skillGroups,
+  validatorExperience,
 } from "@/content";
+import ExperienceCarousel from "./experience-carousel";
 
 function hostOf(href: string) {
   return href.replace(/^https?:\/\//, "").replace(/\/$/, "");
@@ -22,6 +22,15 @@ const web3Tags = new Set([
 
 function chipClass(label: string) {
   return web3Tags.has(label) ? "chip chip-web3" : "chip";
+}
+
+function initials(name: string) {
+  return name
+    .split(/\s+/)
+    .slice(0, 2)
+    .map((word) => word[0])
+    .join("")
+    .toUpperCase();
 }
 
 export default function HomePage() {
@@ -47,8 +56,7 @@ export default function HomePage() {
       <main className="wrap">
         <section className="hero" id="hero" aria-labelledby="hero-title">
           <p className="kicker">Portfolio</p>
-          <h1 id="hero-title">{profile.name}</h1>
-          <p className="handle">{profile.handle}</p>
+          <h1 id="hero-title">{profile.handle}</h1>
           <ul className="roles" aria-label="Roles">
             {profile.roles.map((role) => (
               <li className={chipClass(role)} key={role}>
@@ -92,7 +100,7 @@ export default function HomePage() {
           <p className="kicker">About</p>
           <h2 id="about-title">Community development in crypto and Web3</h2>
           <p className="section-intro">
-            {profile.name} works as a web3 builder, community manager, and
+            {profile.handle} works as a web3 builder, community manager, and
             content creator. The community work is about 5 years, covering
             moderation, community management, and technical customer support.
           </p>
@@ -120,24 +128,37 @@ export default function HomePage() {
         <section id="experience" aria-labelledby="experience-title">
           <p className="kicker">Experience</p>
           <h2 id="experience-title">Roles</h2>
-          <div className="stack">
-            {experience.map((job) => (
-              <article className="card" key={`${job.org}-${job.dates}`}>
-                <div className="exp-top">
-                  <div>
-                    <h3>{job.role}</h3>
-                    <p className="org">{job.org}</p>
+          <ExperienceCarousel />
+        </section>
+
+        <section id="validator" aria-labelledby="validator-title">
+          <p className="kicker">Node Validator</p>
+          <h2 id="validator-title">Validator experience</h2>
+          {validatorExperience.length === 0 ? (
+            <article className="card mt-16">
+              <h3>Details coming soon</h3>
+              <p className="org">Validator projects will be listed here.</p>
+            </article>
+          ) : (
+            <div className="stack">
+              {validatorExperience.map((item) => (
+                <article className="card" key={item.name}>
+                  <div className="exp-top">
+                    <div>
+                      <h3>{item.name}</h3>
+                      <p className="org">{item.network}</p>
+                    </div>
+                    <p className="dates">{item.since}</p>
                   </div>
-                  <p className="dates">{job.dates}</p>
-                </div>
-                <ul className="points">
-                  {job.points.map((point) => (
-                    <li key={point}>{point}</li>
-                  ))}
-                </ul>
-              </article>
-            ))}
-          </div>
+                  <ul className="points">
+                    {item.points.map((point) => (
+                      <li key={point}>{point}</li>
+                    ))}
+                  </ul>
+                </article>
+              ))}
+            </div>
+          )}
         </section>
 
         <section id="ambassador" aria-labelledby="ambassador-title">
@@ -146,7 +167,10 @@ export default function HomePage() {
           <ul className="amb-grid">
             {ambassadors.map((name) => (
               <li className="amb" key={name}>
-                {name}
+                <span className="amb-logo" aria-hidden="true">
+                  {initials(name)}
+                </span>
+                <span className="amb-name">{name}</span>
               </li>
             ))}
           </ul>
@@ -170,15 +194,6 @@ export default function HomePage() {
               </a>
             ))}
           </div>
-        </section>
-
-        <section id="education" aria-labelledby="education-title">
-          <p className="kicker">Education</p>
-          <h2 id="education-title">{education.field}</h2>
-          <article className="card mt-16">
-            <h3>{education.school}</h3>
-            <p className="org">{education.field}</p>
-          </article>
         </section>
 
         <section id="community" aria-labelledby="community-title">
@@ -227,9 +242,7 @@ export default function HomePage() {
       </main>
       <footer className="footer">
         <div className="footer-inner">
-          <p>
-            {profile.name} · {profile.handle}
-          </p>
+          <p>{profile.handle}</p>
           <div className="footer-links">
             <a href={`mailto:${profile.email}`}>Email</a>
             <a href={profile.telegram} target="_blank" rel="noopener noreferrer">

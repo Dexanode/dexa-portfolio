@@ -25,13 +25,12 @@ const mono = JetBrains_Mono({
 });
 
 const description =
-  "Chaerul Oemar Kusnaedi (0xDexa) is a web3 builder, community manager, and content creator with about 5 years in crypto community work.";
+  "0xDexa is a web3 builder, community manager, and content creator with about 5 years in crypto community work.";
 
 const personJsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
-  name: profile.name,
-  alternateName: profile.handle,
+  name: profile.handle,
   email: profile.email,
   jobTitle: [...profile.roles],
   sameAs: [profile.github, profile.x, profile.telegram],
@@ -51,9 +50,9 @@ const personJsonLd = {
 };
 
 export const metadata: Metadata = {
-  title: "Chaerul Oemar Kusnaedi (0xDexa)",
+  title: "0xDexa",
   description,
-  authors: [{ name: profile.name }],
+  authors: [{ name: profile.handle }],
 };
 
 export default function RootLayout({

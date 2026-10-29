@@ -384,10 +384,105 @@ section {
 }
 
 .amb {
-  padding: 24px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+}
+
+.amb-logo {
+  display: flex;
+  flex: 0 0 44px;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: linear-gradient(
+    135deg,
+    rgb(255 159 110 / 22%) 0%,
+    rgb(124 108 255 / 22%) 100%
+  );
+  color: var(--primary);
   font-family: var(--font-display), sans-serif;
-  font-size: 16px;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.amb-name {
+  font-family: var(--font-display), sans-serif;
+  font-size: 15px;
   font-weight: 600;
+}
+
+.carousel {
+  margin-top: 32px;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  padding: 4px 4px 12px;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+.exp-card {
+  flex: 0 0 min(82vw, 400px);
+  scroll-snap-align: start;
+  animation: fade-up 0.45s ease backwards;
+}
+
+.exp-card:nth-child(2) {
+  animation-delay: 0.06s;
+}
+
+.exp-card:nth-child(3) {
+  animation-delay: 0.12s;
+}
+
+.exp-card:nth-child(4) {
+  animation-delay: 0.18s;
+}
+
+.exp-card:nth-child(5) {
+  animation-delay: 0.24s;
+}
+
+.exp-card:nth-child(6) {
+  animation-delay: 0.3s;
+}
+
+.carousel-controls {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.carousel-btn {
+  padding: 10px 20px;
+  font-size: 14px;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .contact {
