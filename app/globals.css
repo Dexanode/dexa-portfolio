@@ -334,13 +334,6 @@ a {
   -webkit-backdrop-filter: blur(10px);
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.45s ease, visibility 0s linear 0.45s;
-}
-
-.menu-overlay-open {
-  opacity: 1;
-  visibility: visible;
-  transition: opacity 0.45s ease;
 }
 
 .menu-nav {
@@ -359,15 +352,6 @@ a {
   letter-spacing: -0.02em;
   line-height: 1.15;
   text-decoration: none;
-  opacity: 0;
-  transform: translateY(44px);
-  transition: opacity 0.5s ease, transform 0.55s var(--ease-out),
-    color 200ms ease;
-}
-
-.menu-overlay-open .menu-nav a {
-  opacity: 1;
-  transform: none;
 }
 
 .menu-nav a:hover {
@@ -505,7 +489,7 @@ main section + section {
 .marquee-track {
   display: flex;
   width: max-content;
-  animation: marquee 30s linear infinite;
+  will-change: transform;
 }
 
 .marquee-copy {
@@ -527,12 +511,6 @@ main section + section {
 .marquee-dot {
   margin: 0 28px;
   color: var(--primary);
-}
-
-@keyframes marquee {
-  to {
-    transform: translateX(-50%);
-  }
 }
 
 /* ---------- kinetic type ---------- */
@@ -1038,13 +1016,27 @@ a.row {
   }
 }
 
+/* ---------- fx: scroll progress + magnetic ---------- */
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 80;
+  background: linear-gradient(90deg, #ffb08a 0%, #ff9f6e 45%, #7c6cff 100%);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+}
+
+.magnetic {
+  display: inline-block;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
-  }
-
-  .marquee-track {
-    animation: none;
   }
 
   *,

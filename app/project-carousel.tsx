@@ -1,7 +1,9 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import gsap from "gsap";
 import { projects } from "@/content";
+import Magnetic from "./magnetic";
 import { useLang } from "./i18n";
 import Reveal from "./reveal";
 
@@ -36,10 +38,33 @@ export default function ProjectCarousel() {
   useEffect(() => {
     const track = trackRef.current;
     if (!track) return;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const cards = Array.from(
+      track.querySelectorAll<HTMLElement>(".proj-card")
+    );
+    const monos = cards.map((c) =>
+      c.querySelector<HTMLElement>(".proj-mono")
+    );
     const onScroll = () => {
       const card = track.querySelector<HTMLElement>(".proj-card");
       const step = card ? card.offsetWidth + 24 : track.clientWidth;
       setIndex(Math.round(track.scrollLeft / step));
+      if (reduce) return;
+      // Parallax: monogram drifts against the card's travel direction.
+      const vw = window.innerWidth;
+      cards.forEach((c, i) => {
+        const r = c.getBoundingClientRect();
+        const offset = (r.left + r.width / 2 - vw / 2) / vw;
+        const mono = monos[i];
+        if (mono) {
+          gsap.to(mono, {
+            x: offset * -60,
+            duration: 0.6,
+            ease: "power2.out",
+            overwrite: "auto",
+          });
+        }
+      });
     };
     track.addEventListener("scroll", onScroll, { passive: true });
     return () => track.removeEventListener("scroll", onScroll);
@@ -66,17 +91,19 @@ export default function ProjectCarousel() {
                   " — " +
                   hostOf(project.href)}
               </p>
-              <a
-                className="touch-btn proj-open"
-                href={project.href}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {t.openProject}
-                <span className="touch-arrow" aria-hidden="true">
-                  →
-                </span>
-              </a>
+              <Magnetic>
+                <a
+                  className="touch-btn proj-open"
+                  href={project.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {t.openProject}
+                  <span className="touch-arrow" aria-hidden="true">
+                    →
+                  </span>
+                </a>
+              </Magnetic>
             </div>
           </article>
         ))}

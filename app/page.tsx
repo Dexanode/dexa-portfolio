@@ -4,10 +4,13 @@ import { ambassadors, profile } from "@/content";
 import { LangProvider, useLang, type Lang } from "./i18n";
 import HeroEntrance from "./hero-entrance";
 import LiveClock from "./live-clock";
+import Magnetic from "./magnetic";
+import MarqueeFx from "./marquee-fx";
 import MenuOverlay from "./menu-overlay";
 import Preloader from "./preloader";
 import ProjectCarousel from "./project-carousel";
 import Reveal from "./reveal";
+import ScrollProgress from "./scroll-progress";
 
 function initials(name: string) {
   return name
@@ -59,12 +62,14 @@ function SiteHeader() {
         <div className="header-controls">
           <div className="control-pill">
             <LangToggle />
-            <a className="touch-btn" href="#contact">
-              {t.getInTouch}
-              <span className="touch-arrow" aria-hidden="true">
-                →
-              </span>
-            </a>
+            <Magnetic>
+              <a className="touch-btn" href="#contact">
+                {t.getInTouch}
+                <span className="touch-arrow" aria-hidden="true">
+                  →
+                </span>
+              </a>
+            </Magnetic>
           </div>
           <MenuOverlay />
         </div>
@@ -367,6 +372,8 @@ export default function HomePage() {
     <LangProvider>
       <Preloader />
       <HeroEntrance />
+      <ScrollProgress />
+      <MarqueeFx />
       <div className="grain" aria-hidden="true" />
       <a className="skip" href="#about">
         {t.skip}
