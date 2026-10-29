@@ -12,6 +12,7 @@ import ProjectCarousel from "./project-carousel";
 import Reveal from "./reveal";
 import ScrollProgress from "./scroll-progress";
 import SkillCarousel from "./skill-carousel";
+import SoundToggle from "./sound-toggle";
 import ThemeToggle from "./theme-toggle";
 import ExperienceAccordion from "./experience-accordion";
 
@@ -53,6 +54,7 @@ function SiteHeader() {
               </a>
             </Magnetic>
           </div>
+          <SoundToggle />
           <MenuOverlay />
         </div>
       </div>
