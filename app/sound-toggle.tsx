@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { publishSoundState } from "./sound-bus";
 
 /* Bring Me The Horizon — "in the dark" (amo, 2019) */
 const TRACK_URI = "spotify:track:4swVflM7KtMxzfHBWqPv9S";
@@ -48,7 +49,9 @@ export default function SoundToggle() {
           if (cancelled) return;
           controllerRef.current = controller;
           controller.addListener("playback_update", (e) => {
-            setPlaying(!e.data.isPaused);
+            const p = !e.data.isPaused;
+            setPlaying(p);
+            publishSoundState(p);
           });
         }
       );
@@ -85,6 +88,13 @@ export default function SoundToggle() {
       cancelled = true;
       window.clearTimeout(timer);
     };
+  }, []);
+
+  /* The bottom-nav sound button routes through here. */
+  useEffect(() => {
+    const onRequest = () => controllerRef.current?.togglePlay();
+    window.addEventListener("dexa:toggle-sound", onRequest);
+    return () => window.removeEventListener("dexa:toggle-sound", onRequest);
   }, []);
 
   const toggle = useCallback(() => {

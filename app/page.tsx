@@ -1,12 +1,15 @@
 "use client";
 
+import { useCallback, useState } from "react";
 import { ambassadors, profile, validators } from "@/content";
 import { t } from "./copy";
 import HeroEntrance from "./hero-entrance";
 import LiveClock from "./live-clock";
 import Magnetic from "./magnetic";
 import MarqueeFx from "./marquee-fx";
+import { MenuButton } from "./menu-overlay";
 import MenuOverlay from "./menu-overlay";
+import BottomNav from "./bottom-nav";
 import Preloader from "./preloader";
 import ProjectCarousel from "./project-carousel";
 import Reveal from "./reveal";
@@ -29,7 +32,13 @@ function indexOf(i: number) {
   return String(i + 1).padStart(2, "0");
 }
 
-function SiteHeader() {
+function SiteHeader({
+  menuOpen,
+  onToggleMenu,
+}: {
+  menuOpen: boolean;
+  onToggleMenu: () => void;
+}) {
   return (
     <header className="header">
       <div className="header-inner">
@@ -55,7 +64,7 @@ function SiteHeader() {
             </Magnetic>
           </div>
           <SoundToggle />
-          <MenuOverlay />
+          <MenuButton open={menuOpen} onToggle={onToggleMenu} />
         </div>
       </div>
     </header>
@@ -369,6 +378,9 @@ function SiteFooter() {
 }
 
 export default function HomePage() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const toggleMenu = useCallback(() => setMenuOpen((v) => !v), []);
+  const closeMenu = useCallback(() => setMenuOpen(false), []);
   return (
     <>
       <Preloader />
@@ -379,9 +391,11 @@ export default function HomePage() {
       <a className="skip" href="#about">
         {t.skip}
       </a>
-      <SiteHeader />
+      <SiteHeader menuOpen={menuOpen} onToggleMenu={toggleMenu} />
       <SiteMain />
       <SiteFooter />
+      <MenuOverlay open={menuOpen} onClose={closeMenu} />
+      <BottomNav menuOpen={menuOpen} onToggleMenu={toggleMenu} />
     </>
   );
 }

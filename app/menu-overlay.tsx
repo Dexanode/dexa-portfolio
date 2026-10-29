@@ -1,12 +1,41 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, type ReactNode } from "react";
 import gsap from "gsap";
 import { profile } from "@/content";
 import { t } from "./copy";
 
-export default function MenuOverlay() {
-  const [open, setOpen] = useState(false);
+export function MenuButton({
+  open,
+  onToggle,
+  className = "menu-btn",
+  children,
+}: {
+  open: boolean;
+  onToggle: () => void;
+  className?: string;
+  children?: ReactNode;
+}) {
+  return (
+    <button
+      type="button"
+      className={className}
+      onClick={onToggle}
+      aria-expanded={open}
+      aria-label={open ? t.menuClose : t.menuOpen}
+    >
+      {children ?? (open ? t.menuClose : t.menuOpen)}
+    </button>
+  );
+}
+
+export default function MenuOverlay({
+  open,
+  onClose,
+}: {
+  open: boolean;
+  onClose: () => void;
+}) {
   const rootRef = useRef<HTMLDivElement>(null);
   const tlRef = useRef<gsap.core.Timeline | null>(null);
   const reduceRef = useRef(false);
@@ -60,52 +89,41 @@ export default function MenuOverlay() {
     } else {
       tl.timeScale(1.5).reverse();
     }
-  }, [open ]);
+  }, [open]);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setOpen(false);
+      if (e.key === "Escape") onClose();
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, []);
+  }, [onClose]);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
     };
-  }, [open ]);
+  }, [open]);
 
   return (
-    <>
-      <button
-        type="button"
-        className="menu-btn"
-        onClick={() => setOpen((v) => !v)}
-        aria-expanded={open}
-        aria-label={open ? t.menuClose : t.menuOpen}
-      >
-        {open ? t.menuClose : t.menuOpen}
-      </button>
-      <div ref={rootRef} className="menu-overlay" aria-hidden={!open}>
-        <nav className="menu-nav" aria-label="Sections">
-          {t.nav.map((item, i) => (
-            <a
-              key={item.href}
-              href={item.href}
-              onClick={() => setOpen(false)}
-              tabIndex={open ? 0 : -1}
-            >
-              <span className="menu-index">
-                {String(i + 1).padStart(2, "0")}
-              </span>
-              {item.label}
-            </a>
-          ))}
-        </nav>
-        <p className="menu-foot">{profile.handle}</p>
-      </div>
-    </>
+    <div ref={rootRef} className="menu-overlay" aria-hidden={!open}>
+      <nav className="menu-nav" aria-label="Sections">
+        {t.nav.map((item, i) => (
+          <a
+            key={item.href}
+            href={item.href}
+            onClick={onClose}
+            tabIndex={open ? 0 : -1}
+          >
+            <span className="menu-index">
+              {String(i + 1).padStart(2, "0")}
+            </span>
+            {item.label}
+          </a>
+        ))}
+      </nav>
+      <p className="menu-foot">{profile.handle}</p>
+    </div>
   );
 }

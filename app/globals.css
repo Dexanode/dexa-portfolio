@@ -1652,3 +1652,111 @@ html[data-theme="light"] .amb-logo img.invert-dark {
     display: none;
   }
 }
+
+/* ---------- SG-style floating bottom nav ---------- */
+.header {
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+body.is-scrolled .header {
+  transform: translateY(-110%);
+}
+
+.bottom-nav {
+  position: fixed;
+  left: 50%;
+  bottom: 22px;
+  z-index: 70;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--bg) 72%, transparent);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  transform: translate(-50%, 140%);
+  pointer-events: none;
+  transition:
+    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.4s ease;
+}
+.bottom-nav.visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+  pointer-events: auto;
+}
+.bottom-nav button {
+  appearance: none;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: border-color 0.25s ease, background 0.25s ease;
+}
+.bottom-nav button:hover {
+  border-color: var(--muted);
+}
+.bottom-nav .bn-logo {
+  padding: 8px 12px;
+}
+.bottom-nav .bn-logo img {
+  height: 20px;
+  width: auto;
+  display: block;
+}
+.bn-burger {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 18px;
+}
+.bn-burger i {
+  display: block;
+  height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: transform 0.3s ease;
+}
+.bn-menu.open .bn-burger i:first-child {
+  transform: translateY(3.5px) rotate(45deg);
+}
+.bn-menu.open .bn-burger i:last-child {
+  transform: translateY(-3.5px) rotate(-45deg);
+}
+.bn-sound .eq {
+  margin: 0;
+}
+.bn-sound.playing .eq i {
+  animation: eq-bounce 0.9s ease-in-out infinite;
+}
+.bn-sound.playing .eq i:nth-child(2) {
+  animation-delay: 0.18s;
+}
+.bn-sound.playing .eq i:nth-child(3) {
+  animation-delay: 0.36s;
+}
+.bn-sound.playing .eq i:nth-child(4) {
+  animation-delay: 0.52s;
+}
+@media (max-width: 420px) {
+  .bottom-nav button {
+    font-size: 0.68rem;
+    padding: 9px 12px;
+    gap: 8px;
+  }
+  .bottom-nav .bn-logo img {
+    height: 16px;
+  }
+}
