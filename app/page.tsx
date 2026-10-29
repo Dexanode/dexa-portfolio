@@ -217,15 +217,15 @@ function SiteMain() {
             {t.ambTitle}
           </h2>
         </Reveal>
-        <ul className="amb-grid">
-          {ambassadors.map((amb, i) => (
-            <li className="amb" key={amb.name}>
-              <Reveal delay={(i % 4) * 60} className="amb-reveal">
-                <span className="amb-logo" aria-hidden="true">
+        <Reveal delay={120}>
+          <div className="amb-marquee" role="list" aria-label={`${t.ambTitle} — row 1`}>
+            <div className="amb-track">
+              {[...ambassadors.slice(0, 6), ...ambassadors.slice(0, 6)].map((amb, i) => (
+                <span className="amb-logo" role="listitem" key={`a-${i}`} data-name={amb.name}>
                   {amb.logo ? (
                     <img
                       src={amb.logo}
-                      alt=""
+                      alt={`${amb.name} logo`}
                       draggable={false}
                       className={[
                         amb.logoInvertLight ? "invert-light" : "",
@@ -238,11 +238,33 @@ function SiteMain() {
                     initials(amb.name)
                   )}
                 </span>
-                <span className="amb-name">{amb.name}</span>
-              </Reveal>
-            </li>
-          ))}
-        </ul>
+              ))}
+            </div>
+          </div>
+          <div className="amb-marquee" role="list" aria-label={`${t.ambTitle} — row 2`}>
+            <div className="amb-track rev">
+              {[...ambassadors.slice(6), ...ambassadors.slice(6)].map((amb, i) => (
+                <span className="amb-logo" role="listitem" key={`b-${i}`} data-name={amb.name}>
+                  {amb.logo ? (
+                    <img
+                      src={amb.logo}
+                      alt={`${amb.name} logo`}
+                      draggable={false}
+                      className={[
+                        amb.logoInvertLight ? "invert-light" : "",
+                        amb.logoInvertDark ? "invert-dark" : "",
+                      ]
+                        .filter(Boolean)
+                        .join(" ")}
+                    />
+                  ) : (
+                    initials(amb.name)
+                  )}
+                </span>
+              ))}
+            </div>
+          </div>
+        </Reveal>
       </section>
 
       <section id="projects" aria-labelledby="projects-title">

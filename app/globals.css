@@ -675,58 +675,86 @@ a.row {
   }
 }
 
-/* ---------- ambassador logo tiles ---------- */
+/* ---------- ambassador marquee ---------- */
 
-.amb-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  margin-top: 40px;
-  padding: 0;
-  list-style: none;
+.amb-marquee {
+  overflow: hidden;
+  margin-top: 52px;
+  padding: 6px 0;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
 }
 
-.amb {
-  padding: 18px;
+.amb-marquee + .amb-marquee {
+  margin-top: 20px;
+}
+
+.amb-track {
+  display: flex;
+  gap: 20px;
+  width: max-content;
+  animation: amb-scroll 32s linear infinite;
+}
+
+.amb-track.rev {
+  animation-direction: reverse;
+}
+
+.amb-marquee:hover .amb-track {
+  animation-play-state: paused;
+}
+
+@keyframes amb-scroll {
+  to { transform: translateX(calc(-50% - 10px)); }
+}
+
+.amb-marquee .amb-logo {
+  position: relative;
+  flex: 0 0 auto;
+  width: clamp(96px, 10vw, 128px);
+  height: auto;
+  border-radius: 18px;
   background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-card);
+  font-size: 28px;
+  cursor: default;
   transition: border-color 200ms ease, transform 200ms ease;
 }
 
-.amb:hover {
+.amb-marquee .amb-logo:hover {
   border-color: color-mix(in srgb, var(--text) 40%, transparent);
   transform: translateY(-3px);
 }
 
-.amb-reveal {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  width: 100%;
+.amb-marquee .amb-logo img {
+  width: 62%;
+  height: 62%;
 }
 
-.amb-logo {
-  display: flex;
-  flex: 0 0 46px;
-  align-items: center;
-  justify-content: center;
-  width: 46px;
-  height: 46px;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  background: color-mix(in srgb, var(--text) 8%, transparent);
-  color: var(--text);
-  font-family: var(--font-display), sans-serif;
-  font-size: 15px;
-  font-weight: 700;
-  letter-spacing: 0.02em;
+/* ambassador name tooltip on hover */
+.amb-marquee .amb-logo::after {
+  content: attr(data-name);
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  background: var(--text);
+  color: var(--bg);
+  font-family: var(--font-mono), monospace;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  padding: 6px 12px;
+  border-radius: 8px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 200ms ease, transform 200ms ease;
+  z-index: 5;
 }
 
-.amb-name {
-  font-family: var(--font-display), sans-serif;
-  font-size: 15px;
-  font-weight: 600;
+.amb-marquee .amb-logo:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
 }
 
 /* ---------- buttons ---------- */
@@ -843,10 +871,6 @@ a.row {
 
   .marquee {
     margin-top: 128px;
-  }
-
-  .amb-grid {
-    grid-template-columns: repeat(4, 1fr);
   }
 
   .footer {
@@ -1467,7 +1491,6 @@ html[data-theme="light"] .amb-logo img.invert-dark {
     animation: none !important;
   }
 
-  .amb:hover,
   .btn:hover {
     transform: none;
   }
