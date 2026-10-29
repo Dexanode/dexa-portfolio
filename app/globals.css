@@ -129,32 +129,12 @@ a {
   text-align: center;
 }
 
-.preloader-bar {
-  display: block;
-  width: min(48vw, 200px);
-  height: 1px;
-  background: var(--border);
-  overflow: hidden;
-}
-
-.preloader-bar i {
-  display: block;
-  height: 100%;
-  background: var(--text);
-  transform: scaleX(0);
-  transform-origin: left center;
-}
-
 .preloader-count {
-  position: absolute;
-  right: 6vw;
-  bottom: 3vh;
-  font-family: var(--font-display), sans-serif;
-  font-size: clamp(72px, 15vw, 168px);
-  font-weight: 700;
-  line-height: 1;
-  letter-spacing: -0.04em;
-  color: var(--primary);
+  font-family: var(--font-mono), monospace;
+  font-size: 14px;
+  letter-spacing: 0.22em;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
 }
 
 /* ---------- header + menu overlay ---------- */

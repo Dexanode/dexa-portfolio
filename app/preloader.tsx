@@ -49,11 +49,8 @@ export default function Preloader() {
           <img src="/logos/dexa-logo-black.svg" alt="" className="mark-light" draggable={false} />
         </span>
         <p className="preloader-quote">{quote}</p>
-        <span className="preloader-bar" aria-hidden="true">
-          <i style={{ transform: `scaleX(${count / 100})` }} />
-        </span>
+        <p className="preloader-count">{count}</p>
       </div>
-      <p className="preloader-count">{count}</p>
     </div>
   );
 }
