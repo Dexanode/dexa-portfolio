@@ -24,6 +24,8 @@ export default function HeroEntrance() {
     const start = () => {
       // Entrance choreography: role line -> title chars -> meta.
       // Position parameters + labels keep the sequencing readable.
+      // will-change only for the animated span, cleared when done (plan 003).
+      gsap.set(".hero .char", { willChange: "transform" });
       const tl = gsap.timeline({
         defaults: { ease: "power3.out" },
       });
@@ -37,7 +39,13 @@ export default function HeroEntrance() {
       tl.addLabel("title", "-=0.55");
       tl.from(
         ".hero .char",
-        { yPercent: 115, duration: 1.05, stagger: 0.055 },
+        {
+          yPercent: 115,
+          duration: 1.05,
+          stagger: 0.055,
+          onComplete: () =>
+            gsap.set(".hero .char", { clearProps: "willChange" }),
+        },
         "title"
       );
       tl.addLabel("meta", "-=0.7");

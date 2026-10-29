@@ -46,7 +46,14 @@ export default function ThemeToggle() {
       aria-pressed={!isDark}
       aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
     >
-      <span className="theme-icon">{isDark ? <MoonIcon /> : <SunIcon />}</span>
+      <span className="theme-icon" aria-hidden="true">
+        <span className={`ti${isDark ? " on" : ""}`}>
+          <MoonIcon />
+        </span>
+        <span className={`ti${!isDark ? " on" : ""}`}>
+          <SunIcon />
+        </span>
+      </span>
     </button>
   );
 }

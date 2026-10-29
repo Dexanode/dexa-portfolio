@@ -351,7 +351,9 @@ function CopyEmail() {
       onClick={copy}
       aria-live="polite"
     >
-      {copied ? t.emailCopied : t.copyEmail}
+      <span key={copied ? "copied" : "idle"} className="copy-label">
+        {copied ? t.emailCopied : t.copyEmail}
+      </span>
     </button>
   );
 }

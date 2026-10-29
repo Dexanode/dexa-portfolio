@@ -145,8 +145,10 @@ export default function ProjectCarousel() {
           →
         </button>
         <span className="proj-counter" aria-hidden="true">
-          {String(Math.min(index + 1, projects.length)).padStart(2, "0")} /{" "}
-          {String(projects.length).padStart(2, "0")}
+          <span key={index} className="counter-num">
+            {String(Math.min(index + 1, projects.length)).padStart(2, "0")}
+          </span>{" "}
+          / {String(projects.length).padStart(2, "0")}
         </span>
       </div>
     </div>

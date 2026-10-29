@@ -21,10 +21,13 @@ export default function Reveal({ children, className = "", delay = 0 }: RevealPr
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     // ScrollTrigger lives on the timeline itself, never on inner tweens.
+    // will-change only for the animated span, cleared when done (plan 003).
     const ctx = gsap.context(() => {
+      gsap.set(el, { willChange: "opacity, transform" });
       const tl = gsap.timeline({
         defaults: { ease: "power3.out" },
         scrollTrigger: { trigger: el, start: "top 88%", once: true },
+        onComplete: () => gsap.set(el, { clearProps: "willChange" }),
       });
       tl.fromTo(
         el,

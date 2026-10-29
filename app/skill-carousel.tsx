@@ -109,8 +109,10 @@ export default function SkillCarousel() {
           →
         </button>
         <span className="proj-counter" aria-hidden="true">
-          {String(Math.min(index + 1, groups.length)).padStart(2, "0")} /{" "}
-          {String(groups.length).padStart(2, "0")}
+          <span key={index} className="counter-num">
+            {String(Math.min(index + 1, groups.length)).padStart(2, "0")}
+          </span>{" "}
+          / {String(groups.length).padStart(2, "0")}
         </span>
       </div>
     </Reveal>
