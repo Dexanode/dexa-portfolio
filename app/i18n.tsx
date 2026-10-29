@@ -47,6 +47,8 @@ export type Dict = {
   ambTitle: string;
   projKicker: string;
   projTitle: string;
+  projIntro: string;
+  openProject: string;
   kindOwn: string;
   kindClient: string;
   commKicker: string;
@@ -188,6 +190,9 @@ const en: Dict = {
   ambTitle: "Programs",
   projKicker: "Projects",
   projTitle: "Selected work",
+  projIntro:
+    "A curated selection of recent projects, where code meets the on-chain world.",
+  openProject: "OPEN PROJECT",
   kindOwn: "Own project",
   kindClient: "Client work",
   commKicker: "Community",
@@ -334,6 +339,9 @@ const id: Dict = {
   ambTitle: "Program",
   projKicker: "Proyek",
   projTitle: "Pekerjaan pilihan",
+  projIntro:
+    "Pilihan project terbaru yang dikurasi, tempat code bertemu dunia on-chain.",
+  openProject: "BUKA PROYEK",
   kindOwn: "Project sendiri",
   kindClient: "Project klien",
   commKicker: "Komunitas",

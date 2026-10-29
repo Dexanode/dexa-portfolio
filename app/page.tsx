@@ -1,15 +1,12 @@
 "use client";
 
-import { ambassadors, profile, projects } from "@/content";
+import { ambassadors, profile } from "@/content";
 import { LangProvider, useLang, type Lang } from "./i18n";
 import LiveClock from "./live-clock";
 import MenuOverlay from "./menu-overlay";
 import Preloader from "./preloader";
+import ProjectCarousel from "./project-carousel";
 import Reveal from "./reveal";
-
-function hostOf(href: string) {
-  return href.replace(/^https?:\/\//, "").replace(/\/$/, "");
-}
 
 function initials(name: string) {
   return name
@@ -269,31 +266,10 @@ function SiteMain() {
             {t.projTitle}
           </h2>
         </Reveal>
-        <div className="rows">
-          {projects.map((project, i) => (
-            <Reveal key={project.href} delay={i * 70}>
-              <a
-                className="row row-link"
-                href={project.href}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span className="row-index">{indexOf(i)}</span>
-                <div>
-                  <h3 className="row-title">{project.name}</h3>
-                  <p className="row-sub">
-                    {(project.kind === "Own project" ? t.kindOwn : t.kindClient) +
-                      " — " +
-                      hostOf(project.href)}
-                  </p>
-                </div>
-                <span className="row-arrow" aria-hidden="true">
-                  →
-                </span>
-              </a>
-            </Reveal>
-          ))}
-        </div>
+        <Reveal delay={120}>
+          <p className="section-intro">{t.projIntro}</p>
+        </Reveal>
+        <ProjectCarousel />
       </section>
 
       <section id="community" aria-labelledby="community-title">
