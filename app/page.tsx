@@ -349,9 +349,7 @@ function SiteFooter() {
           <img src="/logos/dexa-logo-white.svg" alt="" className="mark-dark" draggable={false} />
           <img src="/logos/dexa-logo-black.svg" alt="" className="mark-light" draggable={false} />
         </span>
-        <div className="footer-row">
-          <p>{t.footerNote}</p>
-          <div className="footer-links">
+        <div className="footer-links">
           <a href={`mailto:${profile.email}`}>Email</a>
           <a href={profile.telegram} target="_blank" rel="noopener noreferrer">
             Telegram
@@ -362,7 +360,6 @@ function SiteFooter() {
           <a href={profile.github} target="_blank" rel="noopener noreferrer">
             GitHub
           </a>
-          </div>
         </div>
       </div>
     </footer>

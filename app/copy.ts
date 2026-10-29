@@ -149,7 +149,6 @@ export const t = {
   contactKicker: "Contact",
   contactTitle: "Let's build something together.",
   contactLabels: ["Email", "Telegram", "X", "GitHub"],
-  footerNote: "DEXA — Jakarta, ID",
   preloaderQuotes: [
     "Web3 builder",
     "Blockchain developer",
