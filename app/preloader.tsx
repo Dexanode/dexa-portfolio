@@ -1,14 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { profile } from "@/content";
-
-const QUOTES = [...profile.roles, "Anonymous by design"];
+import { useLang } from "./i18n";
 
 export default function Preloader() {
   const [count, setCount] = useState(0);
   const [gone, setGone] = useState(false);
   const [removed, setRemoved] = useState(false);
+  const { t } = useLang();
+  const QUOTES = t.preloaderQuotes;
 
   useEffect(() => {
     document.documentElement.classList.add("js");

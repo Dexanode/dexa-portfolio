@@ -1,10 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { nav, profile } from "@/content";
+import { profile } from "@/content";
+import { useLang } from "./i18n";
 
 export default function MenuOverlay() {
   const [open, setOpen] = useState(false);
+  const { t } = useLang();
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -28,20 +30,16 @@ export default function MenuOverlay() {
         className="menu-btn"
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
-        aria-label={open ? "Close menu" : "Open menu"}
+        aria-label={open ? t.menuClose : t.menuOpen}
       >
-        <span className="menu-btn-label">{open ? "Close" : "Menu"}</span>
-        <span className="menu-btn-lines" aria-hidden="true">
-          <span />
-          <span />
-        </span>
+        {open ? t.menuClose : t.menuOpen}
       </button>
       <div
         className={`menu-overlay${open ? " menu-overlay-open" : ""}`}
         aria-hidden={!open}
       >
         <nav className="menu-nav" aria-label="Sections">
-          {nav.map((item, i) => (
+          {t.nav.map((item, i) => (
             <a
               key={item.href}
               href={item.href}

@@ -165,40 +165,160 @@ a {
   letter-spacing: -0.01em;
 }
 
-.menu-btn {
-  display: inline-flex;
+/* ---------- Simone-style brand lockup + control pill ---------- */
+
+.brand {
+  display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 10px 18px;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.brand-mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #ffb08a 0%, #ff9f6e 100%);
+  color: var(--on-primary);
+  font-family: var(--font-display), sans-serif;
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+
+.brand-text strong {
+  font-family: var(--font-display), sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.brand-text small {
+  font-family: var(--font-mono), monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+}
+
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.control-pill {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 7px 7px 7px 18px;
   border: 1px solid var(--border);
   border-radius: var(--radius-pill);
-  background: transparent;
-  color: var(--text);
+  background: rgb(20 18 16 / 65%);
+}
+
+.lang-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--muted);
   font-family: var(--font-mono), monospace;
   font-size: 12px;
   font-weight: 500;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+}
+
+.lang-toggle .active {
+  color: var(--text);
+}
+
+.lang-switch {
+  position: relative;
+  width: 38px;
+  height: 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  background: var(--surface);
+}
+
+.lang-knob {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--text);
+  transition: transform 250ms var(--ease-out);
+}
+
+.lang-toggle[data-lang="id"] .lang-knob {
+  transform: translateX(18px);
+}
+
+.touch-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 6px 6px 18px;
+  border-radius: var(--radius-pill);
+  background: linear-gradient(180deg, #ffb08a 0%, #ff9f6e 100%);
+  color: var(--on-primary);
+  font-family: var(--font-display), sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  transition: transform 160ms ease, filter 160ms ease;
+}
+
+.touch-btn:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.06);
+}
+
+.touch-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--on-primary);
+  color: var(--primary);
+  font-size: 15px;
+  line-height: 1;
+}
+
+.menu-btn {
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--text);
+  font-family: var(--font-mono), monospace;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   cursor: pointer;
-  transition: border-color 200ms ease, color 200ms ease;
+  transition: color 200ms ease;
 }
 
 .menu-btn:hover {
-  border-color: rgb(255 159 110 / 50%);
   color: var(--primary);
-}
-
-.menu-btn-lines {
-  display: inline-flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.menu-btn-lines span {
-  display: block;
-  width: 18px;
-  height: 1.5px;
-  background: currentColor;
 }
 
 .menu-overlay {
@@ -313,6 +433,21 @@ main section + section {
     rgb(124 108 255 / 5%) 58%,
     transparent 88%
   );
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent 0 118px,
+    rgb(255 255 255 / 0.028) 118px 119px
+  );
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, transparent 88%);
+  mask-image: linear-gradient(to bottom, black 0%, transparent 88%);
 }
 
 .role-line {
@@ -749,8 +884,28 @@ a.row {
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  html {
+@media (max-width: 640px) {
+  .brand-text small {
+    display: none;
+  }
+
+  .control-pill {
+    gap: 10px;
+    padding: 6px 6px 6px 12px;
+  }
+
+  .touch-btn {
+    font-size: 11px;
+    padding: 5px 5px 5px 12px;
+  }
+
+  .touch-arrow {
+    width: 26px;
+    height: 26px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {  html {
     scroll-behavior: auto;
   }
 
