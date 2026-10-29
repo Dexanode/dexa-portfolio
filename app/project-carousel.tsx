@@ -79,7 +79,18 @@ export default function ProjectCarousel() {
                 className={`proj-visual ${VISUALS[i % VISUALS.length]}`}
                 aria-hidden="true"
               >
-                <span className="proj-mono">{initials(project.name)}</span>
+                {project.logo ? (
+                  <img
+                    className={`proj-mono proj-logo${
+                      project.logoInvertLight ? " invert-light" : ""
+                    }`}
+                    src={project.logo}
+                    alt=""
+                    draggable={false}
+                  />
+                ) : (
+                  <span className="proj-mono">{initials(project.name)}</span>
+                )}
                 <span className="proj-glow" />
               </div>
             </Reveal>

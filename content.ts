@@ -105,22 +105,80 @@ export const experience = [
   },
 ] as const;
 
-export const ambassadors = [
-  "Pontem",
-  "Manta",
-  "PolkaDex",
-  "Duck Chain",
-  "Inery",
-  "SOON SVM",
-  "Coral Finance",
-  "SuperFortune",
-  "Wall App",
-  "Bittime",
-  "Socrates",
-  "OKX",
-] as const;
+export const ambassadors: Array<{
+  name: string;
+  /** Path under /public. Rendered grayscale; falls back to monogram when absent. */
+  logo?: string;
+  /** White logos need inverting on the light theme to stay visible. */
+  logoInvertLight?: boolean;
+}> = [
+  { name: "Pontem" },
+  { name: "Manta" },
+  { name: "PolkaDex" },
+  { name: "Duck Chain" },
+  { name: "Inery" },
+  { name: "SOON SVM" },
+  { name: "Coral Finance" },
+  { name: "SuperFortune" },
+  { name: "Wall App" },
+  { name: "Bittime" },
+  { name: "Socrates" },
+  { name: "OKX" },
+];
 
-export const projects = [
+/** Validator networks — logos supplied by the user via Google Drive (Empower excluded per request). */
+export const validators: Array<{ name: string; logo: string }> = [
+  { name: "Sui", logo: "/logos/validators/sui.svg" },
+  { name: "Sei", logo: "/logos/validators/sei.svg" },
+  { name: "Quicksilver", logo: "/logos/validators/quicksilver.svg" },
+  { name: "SubQuery", logo: "/logos/validators/subquery.svg" },
+  { name: "Forta", logo: "/logos/validators/forta.svg" },
+  { name: "KYVE", logo: "/logos/validators/kyve.svg" },
+  { name: "Aptos", logo: "/logos/validators/aptos.svg" },
+  { name: "Archway", logo: "/logos/validators/archway.svg" },
+  { name: "Akash", logo: "/logos/validators/akash.svg" },
+  { name: "Upticek", logo: "/logos/validators/upticek.svg" },
+  { name: "Stratos", logo: "/logos/validators/stratos.svg" },
+  { name: "Teritori", logo: "/logos/validators/teritori.svg" },
+  { name: "Stride", logo: "/logos/validators/stride.svg" },
+  { name: "Fleek", logo: "/logos/validators/fleek.svg" },
+  { name: "Taiko", logo: "/logos/validators/taiko.svg" },
+  { name: "Ronin", logo: "/logos/validators/ronin.svg" },
+  { name: "Wormhole", logo: "/logos/validators/wormhole.svg" },
+  { name: "Inery", logo: "/logos/validators/inery.svg" },
+  { name: "Q Blockchain", logo: "/logos/validators/qblockchain.svg" },
+  { name: "Gitopia", logo: "/logos/validators/gitopia.svg" },
+  { name: "Nolus", logo: "/logos/validators/nolus.svg" },
+  { name: "Lava", logo: "/logos/validators/lava.svg" },
+  { name: "Celestia", logo: "/logos/validators/celestia.svg" },
+  { name: "Nibiru", logo: "/logos/validators/nibiru.svg" },
+  { name: "Humans.ai", logo: "/logos/validators/humans.svg" },
+  { name: "Mars", logo: "/logos/validators/mars.svg" },
+  { name: "PlanQ", logo: "/logos/validators/planq.svg" },
+  { name: "Lambda", logo: "/logos/validators/lambda.svg" },
+];
+
+/** Experience org name (as in copy.ts) -> logo. */
+export const experienceLogos: Record<
+  string,
+  { logo: string; logoInvertLight?: boolean }
+> = {
+  "Dawn Trade": { logo: "/logos/experience/dawn.svg" },
+  "Starfish Finance": { logo: "/logos/experience/starfish.svg" },
+  "Tidefi Chain": { logo: "/logos/experience/tidelabs.svg" },
+  "SiO2 Finance": { logo: "/logos/experience/sio2.svg" },
+  "Pulse Chain": { logo: "/logos/experience/pulsechain.svg" },
+};
+
+export const projects: Array<{
+  name: string;
+  kind: "Own project" | "Client work";
+  href: string;
+  /** Path under /public. Rendered grayscale; falls back to monogram when absent. */
+  logo?: string;
+  /** White logos need inverting on the light theme to stay visible. */
+  logoInvertLight?: boolean;
+}> = [
   {
     name: "Strix Range",
     kind: "Own project",
@@ -130,13 +188,15 @@ export const projects = [
     name: "Sova Protocol",
     kind: "Client work",
     href: "https://sovaprotocol.xyz",
+    logo: "/logos/sova.svg",
+    logoInvertLight: true,
   },
   {
     name: "Tumbuh",
     kind: "Client work",
     href: "http://tumbuh-six.vercel.app",
   },
-] as const;
+];
 
 export const validatorExperience: Array<{
   name: string;

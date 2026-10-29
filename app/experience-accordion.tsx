@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { experienceLogos } from "@/content";
 import { t } from "./copy";
 import Reveal from "./reveal";
 
@@ -17,6 +18,7 @@ export default function ExperienceAccordion() {
       <div className="exp-list">
         {jobs.map((job, i) => {
           const open = openIndex === i;
+          const logo = experienceLogos[job.org];
           return (
             <div className={`exp-item${open ? " open" : ""}`} key={`${job.org}-${job.dates}`}>
               <button
@@ -28,9 +30,21 @@ export default function ExperienceAccordion() {
               >
                 <span className="row-index">{indexOf(i)}</span>
                 <span className="exp-head-main">
-                  <span className="exp-org">{job.org}</span>
-                  <span className="exp-sub">
-                    {job.role} — {job.dates}
+                  {logo && (
+                    <span className="exp-logo" aria-hidden="true">
+                      <img
+                        src={logo.logo}
+                        alt=""
+                        draggable={false}
+                        className={logo.logoInvertLight ? "invert-light" : ""}
+                      />
+                    </span>
+                  )}
+                  <span className="exp-head-text">
+                    <span className="exp-org">{job.org}</span>
+                    <span className="exp-sub">
+                      {job.role} — {job.dates}
+                    </span>
                   </span>
                 </span>
                 <span className="exp-icon" aria-hidden="true">

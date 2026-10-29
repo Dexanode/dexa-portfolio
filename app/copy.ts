@@ -113,7 +113,7 @@ export const t = {
     },
     {
       role: "Community Manager",
-      org: "Si02 Finance",
+      org: "SiO2 Finance",
       dates: "June 2022 – September 2022",
       points: [
         "Create an article about Si02 Finance and make a demo graphic",

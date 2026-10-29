@@ -1,6 +1,6 @@
 "use client";
 
-import { ambassadors, profile } from "@/content";
+import { ambassadors, profile, validators } from "@/content";
 import { t } from "./copy";
 import HeroEntrance from "./hero-entrance";
 import LiveClock from "./live-clock";
@@ -188,17 +188,18 @@ function SiteMain() {
             {t.valTitle}
           </h2>
         </Reveal>
-        <div className="rows">
-          <Reveal delay={80}>
-            <div className="row">
-              <span className="row-index">01</span>
-              <div>
-                <h3 className="row-title">{t.valSoon}</h3>
-                <p className="row-sub">{t.valSoonSub}</p>
-              </div>
-            </div>
-          </Reveal>
-        </div>
+        <ul className="val-grid">
+          {validators.map((v, i) => (
+            <li className="val" key={v.name}>
+              <Reveal delay={(i % 7) * 50}>
+                <span className="val-logo" aria-hidden="true">
+                  <img src={v.logo} alt="" draggable={false} loading="lazy" />
+                </span>
+                <span className="val-name">{v.name}</span>
+              </Reveal>
+            </li>
+          ))}
+        </ul>
       </section>
 
       <section id="ambassador" aria-labelledby="ambassador-title">
@@ -209,13 +210,22 @@ function SiteMain() {
           </h2>
         </Reveal>
         <ul className="amb-grid">
-          {ambassadors.map((name, i) => (
-            <li className="amb" key={name}>
+          {ambassadors.map((amb, i) => (
+            <li className="amb" key={amb.name}>
               <Reveal delay={(i % 4) * 60} className="amb-reveal">
                 <span className="amb-logo" aria-hidden="true">
-                  {initials(name)}
+                  {amb.logo ? (
+                    <img
+                      src={amb.logo}
+                      alt=""
+                      draggable={false}
+                      className={amb.logoInvertLight ? "invert-light" : ""}
+                    />
+                  ) : (
+                    initials(amb.name)
+                  )}
                 </span>
-                <span className="amb-name">{name}</span>
+                <span className="amb-name">{amb.name}</span>
               </Reveal>
             </li>
           ))}
