@@ -111,35 +111,6 @@ function SiteMain() {
             <LiveClock /> (WIB)
           </span>
         </div>
-        <div className="actions">
-          <a className="btn btn-primary" href={`mailto:${profile.email}`}>
-            Email
-          </a>
-          <a
-            className="btn btn-ghost"
-            href={profile.github}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            GitHub
-          </a>
-          <a
-            className="btn btn-ghost"
-            href={profile.x}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            X
-          </a>
-          <a
-            className="btn btn-ghost"
-            href={profile.telegram}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Telegram
-          </a>
-        </div>
       </section>
 
       <div className="marquee" aria-hidden="true">

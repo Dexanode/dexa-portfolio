@@ -539,6 +539,7 @@ main section + section {
   padding-top: 72px;
   background: transparent;
   border-top: none;
+  text-align: center;
 }
 
 .hero::before {
@@ -576,13 +577,13 @@ main section + section {
 .role-line {
   font-family: var(--font-mono), monospace;
   font-size: 13px;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.2em;
   color: var(--muted);
 }
 
 .hero-title {
   margin-top: 24px;
-  font-size: clamp(72px, 17vw, 216px);
+  font-size: clamp(88px, 21vw, 320px);
   font-weight: 700;
   line-height: 0.95;
   letter-spacing: -0.045em;
@@ -604,6 +605,7 @@ main section + section {
 .hero-meta {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 8px 12px;
   margin-top: 28px;
   font-family: var(--font-mono), monospace;

@@ -22,7 +22,7 @@ export default function HeroEntrance() {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     const start = () => {
-      // Entrance choreography: role line -> title chars -> meta -> buttons.
+      // Entrance choreography: role line -> title chars -> meta.
       // Position parameters + labels keep the sequencing readable.
       const tl = gsap.timeline({
         defaults: { ease: "power3.out" },
@@ -45,11 +45,6 @@ export default function HeroEntrance() {
         ".hero .hero-meta > *",
         { y: 14, opacity: 0, duration: 0.6, stagger: 0.05 },
         "meta"
-      );
-      tl.from(
-        ".hero .actions .btn",
-        { y: 16, opacity: 0, duration: 0.6, stagger: 0.07 },
-        "meta+=0.15"
       );
 
       // Gentle parallax: title drifts as the hero scrolls away.
