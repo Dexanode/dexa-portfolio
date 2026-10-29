@@ -238,6 +238,7 @@ function SiteMain() {
                       src={amb.logo}
                       alt={`${amb.name} logo`}
                       draggable={false}
+                      loading="lazy"
                       className={[
                         amb.logoInvertLight ? "invert-light" : "",
                         amb.logoInvertDark ? "invert-dark" : "",
@@ -261,6 +262,7 @@ function SiteMain() {
                       src={amb.logo}
                       alt={`${amb.name} logo`}
                       draggable={false}
+                      loading="lazy"
                       className={[
                         amb.logoInvertLight ? "invert-light" : "",
                         amb.logoInvertDark ? "invert-dark" : "",
@@ -326,6 +328,9 @@ function SiteMain() {
             {t.contactTitle}
           </h2>
         </Reveal>
+        <Reveal delay={60}>
+          <CopyEmail />
+        </Reveal>
         <div className="rows">
           {contactRows.map((item, i) => (
             <Reveal key={item.label} delay={i * 60}>
@@ -352,13 +357,41 @@ function SiteMain() {
   );
 }
 
+function CopyEmail() {
+  const [copied, setCopied] = useState(false);
+  const copy = useCallback(async () => {
+    try {
+      await navigator.clipboard.writeText(profile.email);
+    } catch {
+      const ta = document.createElement("textarea");
+      ta.value = profile.email;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand("copy");
+      ta.remove();
+    }
+    setCopied(true);
+    window.setTimeout(() => setCopied(false), 1600);
+  }, []);
+  return (
+    <button
+      type="button"
+      className={`copy-email${copied ? " copied" : ""}`}
+      onClick={copy}
+      aria-live="polite"
+    >
+      {copied ? t.emailCopied : t.copyEmail}
+    </button>
+  );
+}
+
 function SiteFooter() {
   return (
     <footer className="footer">
       <div className="footer-inner">
         <span className="footer-logo" aria-hidden="true">
-          <img src="/logos/dexa-logo-white.svg" alt="" className="mark-dark" draggable={false} />
-          <img src="/logos/dexa-logo-black.svg" alt="" className="mark-light" draggable={false} />
+          <img src="/logos/dexa-logo-white.svg" alt="" className="mark-dark" draggable={false} loading="lazy" />
+          <img src="/logos/dexa-logo-black.svg" alt="" className="mark-light" draggable={false} loading="lazy" />
         </span>
         <div className="footer-links">
           <a href={`mailto:${profile.email}`}>Email</a>

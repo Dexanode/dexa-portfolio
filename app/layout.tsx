@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import { Inter, JetBrains_Mono, Space_Grotesk } from "next/font/google";
 import { profile } from "@/content";
@@ -27,7 +27,7 @@ const mono = JetBrains_Mono({
 });
 
 const description =
-  "DEXA is a web3 builder and blockchain developer with about 5 years in crypto community work.";
+  "DEXA is a web3 builder and blockchain developer — five years in crypto, from code to community.";
 
 const personJsonLd = {
   "@context": "https://schema.org",
@@ -66,6 +66,13 @@ export const metadata: Metadata = {
     title: "DEXA — Web3 builder & blockchain developer",
     description,
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
+  ],
 };
 
 export default function RootLayout({

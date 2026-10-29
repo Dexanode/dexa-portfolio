@@ -95,6 +95,7 @@ export default function ProjectCarousel() {
                     src={project.logo}
                     alt=""
                     draggable={false}
+                    loading="lazy"
                   />
                 ) : (
                   <span className="proj-mono">{initials(project.name)}</span>

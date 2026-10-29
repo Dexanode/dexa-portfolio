@@ -1019,6 +1019,14 @@ a.row {
     display: none;
   }
 
+  .header-controls {
+    gap: 10px;
+  }
+
+  .sound-pill {
+    display: none;
+  }
+
   .control-pill {
     gap: 10px;
     padding: 6px 6px 6px 12px;
@@ -1759,4 +1767,27 @@ body.is-scrolled .header {
   .bottom-nav .bn-logo img {
     height: 16px;
   }
+}
+
+/* ---------- copy email button ---------- */
+.copy-email {
+  appearance: none;
+  margin-top: 22px;
+  padding: 12px 22px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text);
+  font-family: var(--font-mono), monospace;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: border-color 0.25s ease, background 0.25s ease;
+}
+.copy-email:hover {
+  border-color: var(--muted);
+}
+.copy-email.copied {
+  border-color: var(--text);
 }

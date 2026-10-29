@@ -25,9 +25,9 @@ export const t = {
     "Jakarta, ID",
   ],
   aboutKicker: "About",
-  aboutTitle: "Community development in crypto and Web3.",
+  aboutTitle: "Builder on-chain, rooted in community.",
   aboutIntro:
-    "DEXA works as a web3 builder, community manager, and content creator. The community work is about 5 years, covering moderation, community management, and technical customer support.",
+    "DEXA is a web3 builder and blockchain developer with five years in crypto. The work spans code and community — Rust and Python development, auto-trading bots, smart contract auditing — alongside community management, ambassador programs across 12 projects, and validator operations on 28 networks.",
   skillsKicker: "Skills",
   skillsTitle: "What he works with",
   skillsIntro:
@@ -149,6 +149,8 @@ export const t = {
   contactKicker: "Contact",
   contactTitle: "Let's build something together.",
   contactLabels: ["Email", "Telegram", "X", "GitHub"],
+  copyEmail: "Copy email",
+  emailCopied: "Copied",
   preloaderQuotes: [
     "Web3 builder",
     "Blockchain developer",

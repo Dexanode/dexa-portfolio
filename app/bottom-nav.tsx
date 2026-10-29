@@ -57,12 +57,14 @@ export default function BottomNav({
           alt=""
           className="mark-dark"
           draggable={false}
+          loading="lazy"
         />
         <img
           src="/logos/dexa-logo-black.svg"
           alt=""
           className="mark-light"
           draggable={false}
+          loading="lazy"
         />
       </button>
       <button

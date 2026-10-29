@@ -31,6 +31,14 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     const root = document.documentElement;
     root.dataset.theme = theme;
     root.style.colorScheme = theme;
+    // Keep the mobile browser chrome in sync with the manual theme.
+    let meta = document.querySelector('meta[name="theme-color"]');
+    if (!meta) {
+      meta = document.createElement("meta");
+      meta.setAttribute("name", "theme-color");
+      document.head.appendChild(meta);
+    }
+    meta.setAttribute("content", theme === "dark" ? "#0a0a0a" : "#ffffff");
     try {
       localStorage.setItem(STORAGE_KEY, theme);
     } catch {

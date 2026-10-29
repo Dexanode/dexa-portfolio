@@ -36,6 +36,7 @@ export default function ExperienceAccordion() {
                         src={logo.logo}
                         alt=""
                         draggable={false}
+                        loading="lazy"
                         className={logo.logoInvertLight ? "invert-light" : ""}
                       />
                     </span>
