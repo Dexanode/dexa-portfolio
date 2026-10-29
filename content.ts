@@ -114,16 +114,16 @@ export const ambassadors: Array<{
   /** Black logos need inverting on the dark theme to stay visible. */
   logoInvertDark?: boolean;
 }> = [
-  { name: "Pontem", logo: "/logos/ambassador/pontem.svg", logoInvertDark: true },
+  { name: "Pontem", logo: "/logos/ambassador/pontem.svg" },
   { name: "Manta", logo: "/logos/ambassador/manta.svg" },
   { name: "PolkaDex", logo: "/logos/ambassador/polkadex.svg" },
   { name: "Duck Chain", logo: "/logos/ambassador/duckchain.svg" },
-  { name: "Inery", logo: "/logos/validators/inery.svg" },
-  { name: "SOON SVM" },
+  { name: "Inery", logo: "/logos/ambassador/inery.svg" },
+  { name: "SOON SVM", logo: "/logos/ambassador/soon.svg" },
   { name: "Coral Finance" },
   { name: "SuperFortune" },
   { name: "Wall App" },
-  { name: "Bittime" },
+  { name: "Bittime", logo: "/logos/ambassador/bittime.svg" },
   { name: "Socrates", logo: "/logos/ambassador/socrates.svg" },
   { name: "OKX", logo: "/logos/ambassador/okx.svg" },
 ];
@@ -167,7 +167,7 @@ export const experienceLogos: Record<
 > = {
   "Dawn Trade": { logo: "/logos/experience/dawn.svg" },
   "Starfish Finance": { logo: "/logos/experience/starfish.svg" },
-  "Tidefi Chain": { logo: "/logos/experience/tidelabs.svg" },
+  "Tidefi Chain": { logo: "/logos/experience/tidefi.svg" },
   "SiO2 Finance": { logo: "/logos/experience/sio2.svg" },
   "Pulse Chain": { logo: "/logos/experience/pulsechain.svg" },
 };
