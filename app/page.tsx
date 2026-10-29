@@ -33,11 +33,11 @@ function SiteHeader() {
     <header className="header">
       <div className="header-inner">
         <a className="brand" href="#hero" aria-label="DEXA home">
-          <span className="brand-mark" aria-hidden="true">
-            D
+          <span className="brand-logo" aria-hidden="true">
+            <img src="/logos/dexa-logo-white.svg" alt="" className="mark-dark" draggable={false} />
+            <img src="/logos/dexa-logo-black.svg" alt="" className="mark-light" draggable={false} />
           </span>
           <span className="brand-text">
-            <strong>DEXA</strong>
             <small>{t.brandRole}</small>
           </span>
         </a>
@@ -345,8 +345,13 @@ function SiteFooter() {
   return (
     <footer className="footer">
       <div className="footer-inner">
-        <p>{t.footerNote}</p>
-        <div className="footer-links">
+        <span className="footer-logo" aria-hidden="true">
+          <img src="/logos/dexa-logo-white.svg" alt="" className="mark-dark" draggable={false} />
+          <img src="/logos/dexa-logo-black.svg" alt="" className="mark-light" draggable={false} />
+        </span>
+        <div className="footer-row">
+          <p>{t.footerNote}</p>
+          <div className="footer-links">
           <a href={`mailto:${profile.email}`}>Email</a>
           <a href={profile.telegram} target="_blank" rel="noopener noreferrer">
             Telegram
@@ -357,6 +362,7 @@ function SiteFooter() {
           <a href={profile.github} target="_blank" rel="noopener noreferrer">
             GitHub
           </a>
+          </div>
         </div>
       </div>
     </footer>
