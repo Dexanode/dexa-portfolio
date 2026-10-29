@@ -70,6 +70,9 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
         />
+        <noscript>
+          <style>{`.reveal{opacity:1 !important;transform:none !important}.preloader{display:none !important}`}</style>
+        </noscript>
         {children}
       </body>
     </html>
