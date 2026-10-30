@@ -1445,6 +1445,28 @@ a.row {
   -webkit-user-drag: none;
 }
 
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 28px;
+}
+
+.footer-copy {
+  color: var(--muted);
+  font-size: 13px;
+  letter-spacing: 0.02em;
+}
+
+@media (max-width: 640px) {
+  .footer-bottom {
+    justify-content: center;
+    text-align: center;
+  }
+}
+
 .footer-links {
   display: flex;
   flex-wrap: wrap;
