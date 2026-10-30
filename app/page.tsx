@@ -11,6 +11,7 @@ import { MenuButton } from "./menu-overlay";
 import MenuOverlay from "./menu-overlay";
 import BottomNav from "./bottom-nav";
 import CountUp from "./count-up";
+import CollabSheet from "./collab-sheet";
 import Preloader from "./preloader";
 import ProjectCarousel from "./project-carousel";
 import Reveal from "./reveal";
@@ -345,12 +346,10 @@ function SiteMain() {
           </p>
         </Reveal>
         <Reveal delay={140}>
-          <a className="contact-email-giant" href={`mailto:${profile.email}`}>
-            {profile.email}
-          </a>
-        </Reveal>
-        <Reveal delay={200}>
-          <CopyEmail />
+          <div className="contact-actions">
+            <CollabSheet />
+            <CopyEmail />
+          </div>
         </Reveal>
         <div className="rows">
           {contactRows.map((item, i) => (
