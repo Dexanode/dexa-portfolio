@@ -50,7 +50,7 @@ export default function HeroEntrance() {
       );
       tl.addLabel("meta", "-=0.7");
       tl.from(
-        ".hero .hero-meta > *",
+        ".hero .hero-meta > *, .hero .hero-stats",
         { y: 14, opacity: 0, duration: 0.6, stagger: 0.05 },
         "meta"
       );

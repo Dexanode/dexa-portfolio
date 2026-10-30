@@ -75,11 +75,6 @@ function SiteHeader({
 function SiteMain() {
   const contactRows = [
     {
-      label: t.contactLabels[0],
-      value: profile.email,
-      href: `mailto:${profile.email}`,
-    },
-    {
       label: t.contactLabels[1],
       value: profile.telegramHandle,
       href: profile.telegram,
@@ -108,6 +103,19 @@ function SiteMain() {
           <span aria-hidden="true">—</span>
           <span>
             <LiveClock /> (WIB)
+          </span>
+        </div>
+        <div className="hero-stats" aria-label="Key stats">
+          <span>
+            <strong>5+</strong> years
+          </span>
+          <span aria-hidden="true">·</span>
+          <span>
+            <strong>28</strong> networks
+          </span>
+          <span aria-hidden="true">·</span>
+          <span>
+            <strong>12</strong> ambassador programs
           </span>
         </div>
       </section>
@@ -330,7 +338,18 @@ function SiteMain() {
             {t.contactTitle}
           </h2>
         </Reveal>
-        <Reveal delay={60}>
+        <Reveal delay={80}>
+          <p className="contact-avail">
+            <span className="pulse-dot" aria-hidden="true" />
+            {t.contactAvailability}
+          </p>
+        </Reveal>
+        <Reveal delay={140}>
+          <a className="contact-email-giant" href={`mailto:${profile.email}`}>
+            {profile.email}
+          </a>
+        </Reveal>
+        <Reveal delay={200}>
           <CopyEmail />
         </Reveal>
         <div className="rows">

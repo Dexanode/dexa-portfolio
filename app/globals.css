@@ -623,6 +623,24 @@ main section + section {
   color: var(--text);
 }
 
+.hero-stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 14px;
+  margin-top: 18px;
+  font-family: var(--font-mono), monospace;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.hero-stats strong {
+  color: var(--text);
+  font-weight: 700;
+}
+
 .marquee {
   overflow: hidden;
   margin-top: 96px;
@@ -698,6 +716,66 @@ main section + section {
   letter-spacing: -0.035em;
   line-height: 1.04;
   max-width: 14ch;
+}
+
+@media (max-width: 640px) {
+  .band-stats {
+    gap: 32px;
+  }
+}
+
+/* ---------- contact finale ---------- */
+
+.contact-avail {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono), monospace;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 20px 0 4px;
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--text);
+  animation: pulse-dot 2.2s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.35;
+    transform: scale(0.75);
+  }
+}
+
+.contact-email-giant {
+  display: inline-block;
+  font-size: clamp(26px, 5vw, 58px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  text-decoration: none;
+  border-bottom: 2px solid var(--border);
+  padding-bottom: 8px;
+  margin: 8px 0 4px;
+  overflow-wrap: anywhere;
+  transition: border-color 0.25s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .contact-email-giant:hover {
+    border-color: var(--text);
+  }
 }
 
 /* ---------- community promo ---------- */

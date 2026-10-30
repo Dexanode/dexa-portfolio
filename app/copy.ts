@@ -159,6 +159,7 @@ export const t = {
   commCta: "Join the Telegram",
   contactKicker: "Contact",
   contactTitle: "Let's build something together.",
+  contactAvailability: "Open to collaborations",
   contactLabels: ["Email", "Telegram", "X", "GitHub"],
   copyEmail: "Copy email",
   emailCopied: "Copied",
