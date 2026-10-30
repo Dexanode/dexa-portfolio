@@ -1448,7 +1448,27 @@ a.row {
 .footer-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px 16px;
+  gap: 8px;
+}
+
+.footer-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  color: var(--muted);
+  transition: color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .footer-icon:hover {
+    color: var(--text);
+    border-color: var(--text);
+    transform: translateY(-2px);
+  }
 }
 
 .footer a {
