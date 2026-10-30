@@ -146,6 +146,13 @@ export const t = {
   kindClient: "Client work",
   commKicker: "Community",
   commTitle: "Airdrop Sultan Indonesia",
+  commHeadline: "Airdrop Sultan Indonesia.",
+  commHeadlineDim: "40,000 hunters strong.",
+  commSub:
+    "Daily airdrop alpha, project collabs, and a community that actually shows up. Built over five years, trusted by dozens of brands.",
+  commStat1Label: "Active members",
+  commStat2Label: "Brand collabs & partnerships",
+  commCta: "Join the Telegram",
   contactKicker: "Contact",
   contactTitle: "Let's build something together.",
   contactLabels: ["Email", "Telegram", "X", "GitHub"],

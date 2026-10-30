@@ -10,6 +10,7 @@ import MarqueeFx from "./marquee-fx";
 import { MenuButton } from "./menu-overlay";
 import MenuOverlay from "./menu-overlay";
 import BottomNav from "./bottom-nav";
+import CountUp from "./count-up";
 import Preloader from "./preloader";
 import ProjectCarousel from "./project-carousel";
 import Reveal from "./reveal";
@@ -265,29 +266,39 @@ function SiteMain() {
       <section id="community" aria-labelledby="community-title">
         <Reveal>
           <p className="kicker">{t.commKicker}</p>
-          <h2 id="community-title" className="kinetic">
-            {profile.communityName}
+          <h2 id="community-title" className="comm-headline">
+            {t.commHeadline} <span className="dim">{t.commHeadlineDim}</span>
           </h2>
         </Reveal>
-        <div className="rows">
-          <Reveal delay={80}>
-            <a
-              className="row row-link"
-              href={profile.communityUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <span className="row-index">01</span>
-              <div>
-                <h3 className="row-title">Telegram</h3>
-                <p className="row-sub">{profile.communityUrl}</p>
+        <Reveal delay={100}>
+          <p className="section-intro">{t.commSub}</p>
+        </Reveal>
+        <Reveal delay={160}>
+          <div className="comm-stats">
+            <div className="comm-stat">
+              <div className="comm-stat-num">
+                <CountUp to={40} suffix="K+" />
               </div>
-              <span className="row-arrow" aria-hidden="true">
-                →
-              </span>
-            </a>
-          </Reveal>
-        </div>
+              <div className="comm-stat-label">{t.commStat1Label}</div>
+            </div>
+            <div className="comm-stat">
+              <div className="comm-stat-num">
+                <CountUp to={50} suffix="+" />
+              </div>
+              <div className="comm-stat-label">{t.commStat2Label}</div>
+            </div>
+          </div>
+        </Reveal>
+        <Reveal delay={220}>
+          <a
+            className="comm-cta"
+            href={profile.communityUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {t.commCta} <span aria-hidden="true">→</span>
+          </a>
+        </Reveal>
       </section>
 
       <section id="contact" aria-labelledby="contact-title">
