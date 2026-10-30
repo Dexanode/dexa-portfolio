@@ -910,15 +910,15 @@ a.row {
   align-items: center;
   gap: 12px;
   width: max-content;
-  animation: skill-scroll 38s linear infinite;
+  animation: skill-scroll 30s linear infinite;
 }
 
 .skill-track.rev {
-  animation-duration: 46s;
+  animation-duration: 36s;
   animation-direction: reverse;
 }
 
-.skill-marquee:hover .skill-track {
+.skill-rows:hover .skill-track {
   animation-play-state: paused;
 }
 
