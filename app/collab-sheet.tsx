@@ -114,7 +114,6 @@ export default function CollabSheet() {
           aria-label={t.collabButton}
         >
           <div className="sheet-inner">
-            <div className="grabber" aria-hidden="true" />
             <button
               type="button"
               className="sheet-close"
@@ -123,6 +122,10 @@ export default function CollabSheet() {
             >
               ×
             </button>
+
+            <p className="sheet-kicker">{t.collabKicker}</p>
+            <h2 className="sheet-title">{t.collabTitle}</h2>
+            <p className="sheet-sub">{t.collabSub}</p>
 
             <p className="sheet-line">{t.collabHi}</p>
             <input

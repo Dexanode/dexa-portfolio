@@ -834,17 +834,61 @@ main section + section {
 
 .sheet-inner {
   position: relative;
-  max-width: 720px;
+  max-width: 640px;
   margin: 0 auto;
-  padding: 12px 26px 34px;
+  padding: 20px 26px 34px;
 }
 
-.grabber {
-  width: 44px;
-  height: 4px;
-  border-radius: 2px;
-  background: var(--border);
-  margin: 0 auto 20px;
+.sheet-inner > :not(.sheet-close) {
+  animation: sheet-item-in 0.5s var(--ease-out) both;
+}
+
+.sheet-inner > :nth-child(2) { animation-delay: 0.04s; }
+.sheet-inner > :nth-child(3) { animation-delay: 0.08s; }
+.sheet-inner > :nth-child(4) { animation-delay: 0.12s; }
+.sheet-inner > :nth-child(5) { animation-delay: 0.16s; }
+.sheet-inner > :nth-child(6) { animation-delay: 0.2s; }
+.sheet-inner > :nth-child(7) { animation-delay: 0.24s; }
+.sheet-inner > :nth-child(8) { animation-delay: 0.28s; }
+.sheet-inner > :nth-child(9) { animation-delay: 0.32s; }
+.sheet-inner > :nth-child(10) { animation-delay: 0.36s; }
+.sheet-inner > :nth-child(11) { animation-delay: 0.4s; }
+.sheet-inner > :nth-child(12) { animation-delay: 0.44s; }
+.sheet-inner > :nth-child(13) { animation-delay: 0.48s; }
+.sheet-inner > :nth-child(14) { animation-delay: 0.52s; }
+.sheet-inner > :nth-child(15) { animation-delay: 0.56s; }
+.sheet-inner > :nth-child(16) { animation-delay: 0.6s; }
+.sheet-inner > :nth-child(17) { animation-delay: 0.64s; }
+
+@keyframes sheet-item-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+
+.sheet-kicker {
+  font-family: var(--font-mono), monospace;
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 6px 0 10px;
+}
+
+.sheet-title {
+  font-size: clamp(30px, 5vw, 44px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+
+.sheet-sub {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.65;
+  margin-top: 10px;
+  max-width: 46ch;
 }
 
 .sheet-close {

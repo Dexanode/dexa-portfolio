@@ -348,7 +348,6 @@ function SiteMain() {
         <Reveal delay={140}>
           <div className="contact-actions">
             <CollabSheet />
-            <CopyEmail />
           </div>
         </Reveal>
         <div className="rows">
@@ -374,36 +373,6 @@ function SiteMain() {
         </div>
       </section>
     </main>
-  );
-}
-
-function CopyEmail() {
-  const [copied, setCopied] = useState(false);
-  const copy = useCallback(async () => {
-    try {
-      await navigator.clipboard.writeText(profile.email);
-    } catch {
-      const ta = document.createElement("textarea");
-      ta.value = profile.email;
-      document.body.appendChild(ta);
-      ta.select();
-      document.execCommand("copy");
-      ta.remove();
-    }
-    setCopied(true);
-    window.setTimeout(() => setCopied(false), 1600);
-  }, []);
-  return (
-    <button
-      type="button"
-      className={`copy-email${copied ? " copied" : ""}`}
-      onClick={copy}
-      aria-live="polite"
-    >
-      <span key={copied ? "copied" : "idle"} className="copy-label">
-        {copied ? t.emailCopied : t.copyEmail}
-      </span>
-    </button>
   );
 }
 

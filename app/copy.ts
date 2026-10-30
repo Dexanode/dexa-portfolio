@@ -161,6 +161,10 @@ export const t = {
   contactTitle: "Let's build something together.",
   contactAvailability: "Open to collaborations",
   collabButton: "Wanna collab?",
+  collabKicker: "Contact",
+  collabTitle: "Wanna collab?",
+  collabSub:
+    "Tell me who you are and what you need. It opens your email app with everything pre-filled.",
   collabHi: "Hi, I'm",
   collabNamePh: "your name",
   collabWorkFor: "and I work for",
