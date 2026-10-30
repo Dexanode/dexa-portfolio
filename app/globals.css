@@ -514,11 +514,26 @@ html[data-theme="light"] .mark-light {
 
 .menu-foot {
   margin-top: 48px;
+}
+
+.menu-socials {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.menu-foot-line {
+  margin-top: 18px;
   font-family: var(--font-mono), monospace;
   font-size: 12px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
+  letter-spacing: 0.14em;
   color: var(--muted);
+}
+
+.menu-foot-line a {
+  color: var(--text);
+  text-decoration: none;
+  border-bottom: 1px solid var(--border);
 }
 
 /* ---------- layout ---------- */
@@ -1422,6 +1437,52 @@ a.row {
 }
 
 /* ---------- footer ---------- */
+
+/* ---------- 404 ---------- */
+
+.notfound {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.notfound-title {
+  font-size: clamp(56px, 12vw, 160px);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  margin: 18px 0 14px;
+}
+
+.notfound-sub {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.7;
+  margin-bottom: 30px;
+}
+
+.notfound-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 34px;
+  border-radius: 999px;
+  background: var(--text);
+  color: var(--bg);
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.25s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .notfound-btn:hover {
+    transform: translateY(-2px);
+  }
+}
 
 .footer {
   border-top: 1px solid var(--border);

@@ -4,6 +4,8 @@ import { useEffect, useRef, type ReactNode } from "react";
 import gsap from "gsap";
 import { profile } from "@/content";
 import { t } from "./copy";
+import SocialIcons from "./social-icons";
+import LiveClock from "./live-clock";
 
 export function MenuButton({
   open,
@@ -123,7 +125,16 @@ export default function MenuOverlay({
           </a>
         ))}
       </nav>
-      <p className="menu-foot">{profile.handle}</p>
+      <div className="menu-foot">
+        <div className="menu-socials">
+          <SocialIcons tabbable={open} />
+        </div>
+        <p className="menu-foot-line">
+          <a href={`mailto:${profile.email}`}>{profile.email}</a>
+          <span aria-hidden="true"> · </span>
+          <LiveClock /> <span>WIB</span>
+        </p>
+      </div>
     </div>
   );
 }
