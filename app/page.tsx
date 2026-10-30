@@ -130,12 +130,34 @@ function SiteMain() {
       <section id="about" aria-labelledby="about-title">
         <Reveal>
           <p className="kicker">{t.aboutKicker}</p>
-          <h2 id="about-title" className="statement">
-            {t.aboutTitle}
+          <h2 id="about-title" className="band-headline">
+            {t.aboutTitle} <span className="dim">{t.aboutTitleDim}</span>
           </h2>
         </Reveal>
         <Reveal delay={120}>
           <p className="section-intro">{t.aboutIntro}</p>
+        </Reveal>
+        <Reveal delay={180}>
+          <div className="band-stats">
+            <div className="about-stat">
+              <div className="band-stat-num">
+                <CountUp to={5} suffix="+" />
+              </div>
+              <div className="band-stat-label">{t.aboutStat1Label}</div>
+            </div>
+            <div className="about-stat">
+              <div className="band-stat-num">
+                <CountUp to={12} />
+              </div>
+              <div className="band-stat-label">{t.aboutStat2Label}</div>
+            </div>
+            <div className="about-stat">
+              <div className="band-stat-num">
+                <CountUp to={28} />
+              </div>
+              <div className="band-stat-label">{t.aboutStat3Label}</div>
+            </div>
+          </div>
         </Reveal>
       </section>
 
@@ -266,7 +288,7 @@ function SiteMain() {
       <section id="community" aria-labelledby="community-title">
         <Reveal>
           <p className="kicker">{t.commKicker}</p>
-          <h2 id="community-title" className="comm-headline">
+          <h2 id="community-title" className="band-headline">
             {t.commHeadline} <span className="dim">{t.commHeadlineDim}</span>
           </h2>
         </Reveal>
@@ -274,18 +296,18 @@ function SiteMain() {
           <p className="section-intro">{t.commSub}</p>
         </Reveal>
         <Reveal delay={160}>
-          <div className="comm-stats">
+          <div className="band-stats">
             <div className="comm-stat">
-              <div className="comm-stat-num">
+              <div className="band-stat-num">
                 <CountUp to={40} suffix="K+" />
               </div>
-              <div className="comm-stat-label">{t.commStat1Label}</div>
+              <div className="band-stat-label">{t.commStat1Label}</div>
             </div>
             <div className="comm-stat">
-              <div className="comm-stat-num">
+              <div className="band-stat-num">
                 <CountUp to={50} suffix="+" />
               </div>
-              <div className="comm-stat-label">{t.commStat2Label}</div>
+              <div className="band-stat-label">{t.commStat2Label}</div>
             </div>
           </div>
         </Reveal>

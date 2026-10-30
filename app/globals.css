@@ -702,7 +702,7 @@ main section + section {
 
 /* ---------- community promo ---------- */
 
-.comm-headline {
+.band-headline {
   font-size: clamp(34px, 6vw, 72px);
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -710,18 +710,18 @@ main section + section {
   max-width: 16ch;
 }
 
-.comm-headline .dim {
+.band-headline .dim {
   color: var(--muted);
 }
 
-.comm-stats {
+.band-stats {
   display: flex;
   gap: 56px;
   flex-wrap: wrap;
   margin: 8px 0 44px;
 }
 
-.comm-stat-num {
+.band-stat-num {
   font-size: clamp(44px, 5.5vw, 68px);
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -729,7 +729,7 @@ main section + section {
   line-height: 1;
 }
 
-.comm-stat-label {
+.band-stat-label {
   font-family: var(--font-mono), monospace;
   font-size: 11px;
   letter-spacing: 0.16em;

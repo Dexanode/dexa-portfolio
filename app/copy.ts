@@ -25,9 +25,13 @@ export const t = {
     "Jakarta, ID",
   ],
   aboutKicker: "About",
-  aboutTitle: "Builder on-chain, rooted in community.",
+  aboutTitle: "Builder on-chain,",
+  aboutTitleDim: "rooted in community.",
   aboutIntro:
-    "DEXA is a web3 builder and blockchain developer with five years in crypto. The work spans code and community — Rust and Python development, auto-trading bots, smart contract auditing — alongside community management, ambassador programs across 12 projects, and validator operations on 28 networks.",
+    "DEXA is a web3 builder and blockchain developer. The work spans code and community: Rust and Python development, auto-trading bots, smart contract auditing, alongside community management and validator operations.",
+  aboutStat1Label: "Years in crypto",
+  aboutStat2Label: "Ambassador programs",
+  aboutStat3Label: "Validator networks",
   skillsKicker: "Skills",
   skillsTitle: "What he works with",
   skillsIntro:
