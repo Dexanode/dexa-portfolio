@@ -55,7 +55,7 @@ export default function SkillMarquee() {
         </p>
       </div>
       <p className="skill-hint" aria-hidden="true">
-        Hover to pause — click a group to read more
+        Hover a group to pause — click to read more
       </p>
     </div>
   );
