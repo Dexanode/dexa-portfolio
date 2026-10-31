@@ -13,6 +13,7 @@ import BottomNav from "./bottom-nav";
 import CountUp from "./count-up";
 import CollabSheet from "./collab-sheet";
 import SocialIcons from "./social-icons";
+import HeroWaves from "./hero-waves";
 import Preloader from "./preloader";
 import ProjectCarousel from "./project-carousel";
 import Reveal from "./reveal";
@@ -74,6 +75,7 @@ function SiteMain() {
   return (
     <main className="wrap">
       <section className="hero" id="hero" aria-labelledby="hero-title">
+        <HeroWaves />
         <p className="role-line">{t.heroRoleLine}</p>
         <h1 id="hero-title" className="hero-title" aria-label="DEXA">
           {"DEXA".split("").map((c, i) => (
