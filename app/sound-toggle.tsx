@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { publishSoundState } from "./sound-bus";
+import { publishSoundState, publishTrack, TrackRequest } from "./sound-bus";
 
 /* Bring Me The Horizon — "in the dark" (amo, 2019) */
 const TRACK_URI = "spotify:track:4swVflM7KtMxzfHBWqPv9S";
@@ -34,14 +34,22 @@ declare global {
 export default function SoundToggle() {
   const holderRef = useRef<HTMLDivElement>(null);
   const controllerRef = useRef<SpotifyEmbedController | null>(null);
+  const apiRef = useRef<SpotifyIframeApi | null>(null);
+  const trackRef = useRef({
+    uri: TRACK_URI,
+    title: "Bring Me The Horizon — In The Dark",
+    url: TRACK_URL,
+  });
   const [playing, setPlaying] = useState(false);
   const [apiBlocked, setApiBlocked] = useState(false);
+  const [pillTitle, setPillTitle] = useState(trackRef.current.title);
 
   useEffect(() => {
     let cancelled = false;
 
     const boot = (api: SpotifyIframeApi) => {
       if (cancelled || controllerRef.current || !holderRef.current) return;
+      apiRef.current = api;
       api.createController(
         holderRef.current,
         { uri: TRACK_URI, width: "1", height: "1" },
@@ -97,13 +105,48 @@ export default function SoundToggle() {
     return () => window.removeEventListener("dexa:toggle-sound", onRequest);
   }, []);
 
+  /* The "On repeat" rows route through here: swap the embed to the
+     requested track (the IFrame API has no load-uri, so the controller
+     is recreated), then play it. */
+  useEffect(() => {
+    const onPlayTrack = (e: Event) => {
+      const { uri, title, url } = (e as CustomEvent<TrackRequest>).detail;
+      const api = apiRef.current;
+      const holder = holderRef.current;
+      if (apiBlocked || !api || !holder) {
+        window.open(url, "_blank", "noopener,noreferrer");
+        return;
+      }
+      trackRef.current = { uri, title, url };
+      setPillTitle(title);
+      publishTrack(uri);
+      holder.innerHTML = "";
+      controllerRef.current = null;
+      api.createController(
+        holder,
+        { uri, width: "1", height: "1" },
+        (controller) => {
+          controllerRef.current = controller;
+          controller.addListener("playback_update", (ev) => {
+            const p = !ev.data.isPaused;
+            setPlaying(p);
+            publishSoundState(p);
+          });
+          controller.play();
+        }
+      );
+    };
+    window.addEventListener("dexa:play-track", onPlayTrack);
+    return () => window.removeEventListener("dexa:play-track", onPlayTrack);
+  }, [apiBlocked]);
+
   const toggle = useCallback(() => {
     const c = controllerRef.current;
     if (c) {
       c.togglePlay();
     } else if (apiBlocked) {
       /* Spotify embed blocked (e.g. ad-blocker): open the track instead. */
-      window.open(TRACK_URL, "_blank", "noopener,noreferrer");
+      window.open(trackRef.current.url, "_blank", "noopener,noreferrer");
     }
   }, [apiBlocked]);
 
@@ -116,7 +159,7 @@ export default function SoundToggle() {
         onClick={toggle}
         aria-pressed={playing}
         aria-label={playing ? "Pause music" : "Play music"}
-        title="Bring Me The Horizon — In The Dark"
+        title={pillTitle}
       >
         <span>Sound</span>
         <span className="eq" aria-hidden="true">

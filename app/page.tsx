@@ -14,6 +14,8 @@ import CountUp from "./count-up";
 import CollabSheet from "./collab-sheet";
 import SocialIcons from "./social-icons";
 import HeroWaves from "./hero-waves";
+import OnRepeat from "./on-repeat";
+import LyricDivider from "./lyric-divider";
 import Preloader from "./preloader";
 import ProjectCarousel from "./project-carousel";
 import Reveal from "./reveal";
@@ -316,6 +318,10 @@ function SiteMain() {
           </a>
         </Reveal>
       </section>
+
+      <LyricDivider />
+
+      <OnRepeat />
 
       <section id="contact" aria-labelledby="contact-title">
         <Reveal>

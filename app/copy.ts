@@ -14,6 +14,7 @@ export const t = {
     { href: "#ambassador", label: "Ambassador" },
     { href: "#projects", label: "Projects" },
     { href: "#community", label: "Community" },
+    { href: "#on-repeat", label: "On repeat" },
     { href: "#contact", label: "Contact" },
   ],
   heroRoleLine: "Web3 builder & blockchain developer. Anonymous by design.",
@@ -157,6 +158,15 @@ export const t = {
   commStat1Label: "Active members",
   commStat2Label: "Brand collabs & partnerships",
   commCta: "Join the Telegram",
+  lyricAriaLabel: "Lyric",
+  lyricQuote:
+    "So you can throw me to the wolves, tomorrow I will come back, leader of the whole pack",
+  lyricAttr: "Bring Me The Horizon — “Throne”",
+  onRepeatKicker: "On repeat",
+  onRepeatTitle: "The soundtrack.",
+  onRepeatTitleDim: "Loud enough to build to.",
+  onRepeatSub:
+    "Five Bring Me The Horizon staples on permanent rotation. Hit play and it runs through the sound pill up top.",
   contactKicker: "Contact",
   contactTitle: "Let's build something together.",
   contactAvailability: "Open to collaborations",
