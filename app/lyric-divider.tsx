@@ -1,59 +1,6 @@
-import { useId } from "react";
-import Reveal from "./reveal";
-import { t } from "./copy";
-
-/* Distressed horizontal rule: a thin line roughened by turbulence.
-   Monochrome, subtle — the metal accent without breaking the editorial look. */
-function GrungeRule() {
-  const id = useId();
-  const filterId = `grunge-${id.replace(/[^a-zA-Z0-9]/g, "")}`;
-  return (
-    <svg
-      className="grunge-rule"
-      viewBox="0 0 1440 24"
-      preserveAspectRatio="none"
-      aria-hidden="true"
-    >
-      <defs>
-        <filter
-          id={filterId}
-          x="-5%"
-          y="-200%"
-          width="110%"
-          height="500%"
-        >
-          <feTurbulence
-            type="fractalNoise"
-            baseFrequency="0.012 0.35"
-            numOctaves="3"
-            seed="11"
-            result="n"
-          />
-          <feDisplacementMap in="SourceGraphic" in2="n" scale="12" />
-        </filter>
-      </defs>
-      <rect
-        x="0"
-        y="10"
-        width="1440"
-        height="3"
-        style={{ fill: "var(--border)" }}
-        filter={`url(#${filterId})`}
-      />
-    </svg>
-  );
-}
-
+/* Removed at user request (2026-10-31, "lebay").
+   Kept as a stub: push-files cannot delete remote files, so this keeps the
+   remote snapshot compiling. Not imported anywhere. */
 export default function LyricDivider() {
-  return (
-    <section className="lyric-divider" aria-label={t.lyricAriaLabel}>
-      <GrungeRule />
-      <Reveal>
-        <blockquote className="lyric-quote">
-          &ldquo;{t.lyricQuote}&rdquo;
-        </blockquote>
-        <p className="lyric-attr">{t.lyricAttr}</p>
-      </Reveal>
-    </section>
-  );
+  return null;
 }
