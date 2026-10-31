@@ -15,6 +15,7 @@ import CollabSheet from "./collab-sheet";
 import SocialIcons from "./social-icons";
 import HeroWaves from "./hero-waves";
 import OnRepeat from "./on-repeat";
+import GrungeRule from "./grunge-rule";
 import Preloader from "./preloader";
 import ProjectCarousel from "./project-carousel";
 import Reveal from "./reveal";
@@ -317,6 +318,8 @@ function SiteMain() {
           </a>
         </Reveal>
       </section>
+
+      <GrungeRule />
 
       <OnRepeat />
 
