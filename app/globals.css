@@ -12,6 +12,25 @@
   --radius-pill: 999px;
   --max: 1200px;
   --ease-out: cubic-bezier(0.22, 0.61, 0.36, 1);
+  /* Gentle spring (Motion best-practices): subtle overshoot, settles fast.
+     Applied as progressive enhancement — browsers without linear() keep
+     the var(--ease-out) timing from the shorthand. */
+  --spring-enter: linear(
+    0,
+    0.12 6%,
+    0.32 13%,
+    0.55 20%,
+    0.75 27%,
+    0.9 34%,
+    0.99 41%,
+    1.03 49%,
+    1.045 56%,
+    1.035 64%,
+    1.015 72%,
+    1.002 80%,
+    1 88%,
+    1
+  );
   color-scheme: dark;
 }
 
@@ -837,7 +856,9 @@ main section + section {
   border-top: 1px solid var(--border);
   border-radius: 20px 20px 0 0;
   box-shadow: 0 -24px 64px rgba(0, 0, 0, 0.5);
-  animation: sheet-up 0.38s var(--ease-out);
+  animation: sheet-up 0.45s var(--ease-out);
+  /* Spring feel where supported; falls back to --ease-out above. */
+  animation-timing-function: var(--spring-enter);
 }
 
 @keyframes sheet-up {
