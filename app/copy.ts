@@ -158,10 +158,6 @@ export const t = {
   commStat1Label: "Active members",
   commStat2Label: "Brand collabs & partnerships",
   commCta: "Join the Telegram",
-  lyricAriaLabel: "Lyric",
-  lyricQuote:
-    "So you can throw me to the wolves, tomorrow I will come back, leader of the whole pack",
-  lyricAttr: "Bring Me The Horizon — “Throne”",
   onRepeatKicker: "On repeat",
   onRepeatTitle: "The soundtrack.",
   onRepeatTitleDim: "Loud enough to build to.",
