@@ -52,6 +52,30 @@ html[data-theme="light"] {
   color: var(--bg);
 }
 
+/* Monochrome scrollbar (theme-aware via vars). */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) var(--bg);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 8px;
+  border: 2px solid var(--bg);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted);
+}
+
 /* Smooth cross-fade while the theme toggles (added/removed by theme.tsx). */
 .theme-anim,
 .theme-anim *,
