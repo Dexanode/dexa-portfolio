@@ -91,7 +91,7 @@ export default function OnRepeat() {
   return (
     <section id="on-repeat" aria-labelledby="on-repeat-title">
       <Reveal>
-        <p className="kicker">{t.onRepeatKicker}</p>
+        <p className="kicker"><span className="kicker-num">08</span>{t.onRepeatKicker}</p>
         <h2 id="on-repeat-title" className="band-headline">
           {t.onRepeatTitle} <span className="dim">{t.onRepeatTitleDim}</span>
         </h2>

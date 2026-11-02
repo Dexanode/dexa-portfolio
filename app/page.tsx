@@ -126,7 +126,7 @@ function SiteMain() {
 
       <section id="about" aria-labelledby="about-title">
         <Reveal>
-          <p className="kicker">{t.aboutKicker}</p>
+          <p className="kicker"><span className="kicker-num">01</span>{t.aboutKicker}</p>
           <h2 id="about-title" className="band-headline">
             {t.aboutTitle} <span className="dim">{t.aboutTitleDim}</span>
           </h2>
@@ -160,7 +160,7 @@ function SiteMain() {
 
       <section id="skills" aria-labelledby="skills-title">
         <Reveal>
-          <p className="kicker">{t.skillsKicker}</p>
+          <p className="kicker"><span className="kicker-num">02</span>{t.skillsKicker}</p>
           <h2 id="skills-title" className="skills-heading">
             {t.skillsTitle}
           </h2>
@@ -173,7 +173,7 @@ function SiteMain() {
 
       <section id="experience" aria-labelledby="experience-title">
         <Reveal>
-          <p className="kicker">{t.expKicker}</p>
+          <p className="kicker"><span className="kicker-num">03</span>{t.expKicker}</p>
           <h2 id="experience-title" className="kinetic">
             {t.expTitle}
           </h2>
@@ -183,7 +183,7 @@ function SiteMain() {
 
       <section id="validator" aria-labelledby="validator-title">
         <Reveal>
-          <p className="kicker">{t.valKicker}</p>
+          <p className="kicker"><span className="kicker-num">04</span>{t.valKicker}</p>
           <h2 id="validator-title" className="kinetic">
             {t.valTitle}
           </h2>
@@ -212,7 +212,7 @@ function SiteMain() {
 
       <section id="ambassador" aria-labelledby="ambassador-title">
         <Reveal>
-          <p className="kicker">{t.ambKicker}</p>
+          <p className="kicker"><span className="kicker-num">05</span>{t.ambKicker}</p>
           <h2 id="ambassador-title" className="kinetic">
             {t.ambTitle}
           </h2>
@@ -271,7 +271,7 @@ function SiteMain() {
 
       <section id="projects" aria-labelledby="projects-title">
         <Reveal>
-          <p className="kicker">{t.projKicker}</p>
+          <p className="kicker"><span className="kicker-num">06</span>{t.projKicker}</p>
           <h2 id="projects-title" className="kinetic">
             {t.projTitle}
           </h2>
@@ -284,7 +284,7 @@ function SiteMain() {
 
       <section id="community" aria-labelledby="community-title">
         <Reveal>
-          <p className="kicker">{t.commKicker}</p>
+          <p className="kicker"><span className="kicker-num">07</span>{t.commKicker}</p>
           <h2 id="community-title" className="band-headline">
             {t.commHeadline} <span className="dim">{t.commHeadlineDim}</span>
           </h2>
@@ -326,7 +326,7 @@ function SiteMain() {
 
       <section id="contact" aria-labelledby="contact-title">
         <Reveal>
-          <p className="kicker">{t.contactKicker}</p>
+          <p className="kicker"><span className="kicker-num">09</span>{t.contactKicker}</p>
           <h2 id="contact-title" className="statement">
             {t.contactTitle}
           </h2>
@@ -361,6 +361,10 @@ function SiteFooter() {
           <SocialIcons />
         </div>
         </div>
+        <p className="footer-colophon">
+          Set in Space Grotesk, Inter &amp; JetBrains Mono — built with Next.js
+          &amp; GSAP.
+        </p>
       </div>
     </footer>
   );
