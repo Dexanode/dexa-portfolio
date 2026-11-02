@@ -16,6 +16,7 @@ import SocialIcons from "./social-icons";
 import HeroWaves from "./hero-waves";
 import OnRepeat from "./on-repeat";
 import GrungeRule from "./grunge-rule";
+import EasterEgg from "./easter-egg";
 import Preloader from "./preloader";
 import ProjectCarousel from "./project-carousel";
 import Reveal from "./reveal";
@@ -384,6 +385,7 @@ export default function HomePage() {
       <SiteFooter />
       <MenuOverlay open={menuOpen} onClose={closeMenu} />
       <BottomNav menuOpen={menuOpen} onToggleMenu={toggleMenu} />
+      <EasterEgg />
     </>
   );
 }

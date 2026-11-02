@@ -1647,6 +1647,72 @@ a.row {
   }
 }
 
+/* ---------- easter egg ---------- */
+
+.blegh-flash {
+  position: fixed;
+  inset: 0;
+  z-index: 95;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.blegh-flash span {
+  font-size: clamp(80px, 22vw, 300px);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: var(--text);
+  text-shadow: 0 0 60px var(--glow);
+  animation: blegh-in 1.4s var(--ease-out) both;
+}
+
+@keyframes blegh-in {
+  0% {
+    opacity: 0;
+    transform: scale(2.4);
+    filter: blur(10px);
+  }
+  12% {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+  }
+  70% {
+    opacity: 1;
+    transform: scale(0.98);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+}
+
+body.bmth-shake .wrap {
+  animation: bmth-shake 0.55s linear;
+}
+
+@keyframes bmth-shake {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  20% {
+    transform: translate(-8px, 4px) rotate(-0.4deg);
+  }
+  40% {
+    transform: translate(7px, -5px) rotate(0.35deg);
+  }
+  60% {
+    transform: translate(-5px, -3px);
+  }
+  80% {
+    transform: translate(6px, 4px) rotate(-0.2deg);
+  }
+}
+
 /* ---------- footer ---------- */
 
 /* ---------- 404 ---------- */
