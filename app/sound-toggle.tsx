@@ -3,156 +3,160 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { publishSoundState, publishTrack, TrackRequest } from "./sound-bus";
 
-/* Bring Me The Horizon — "in the dark" (amo, 2019) */
-const TRACK_URI = "spotify:track:4swVflM7KtMxzfHBWqPv9S";
-const TRACK_URL = "https://open.spotify.com/track/4swVflM7KtMxzfHBWqPv9S";
+/* Bring Me The Horizon — "in the dark" (amo, 2019), official video.
+   YouTube IFrame Player API: full tracks, no Premium needed to embed —
+   the viewer's own YouTube Premium (like the user's) makes it ad-free. */
+const DEFAULT_VIDEO_ID = "Thazgd1HFus";
+const DEFAULT_TITLE = "Bring Me The Horizon — in the dark";
+const DEFAULT_URL = "https://www.youtube.com/watch?v=Thazgd1HFus";
 
-type SpotifyEmbedController = {
-  play: () => void;
-  pause: () => void;
-  togglePlay: () => void;
-  addListener: (
-    event: string,
-    cb: (e: { data: { isPaused: boolean } }) => void
-  ) => void;
+type YTPlayerInstance = {
+  loadVideoById: (videoId: string) => void;
+  playVideo: () => void;
+  pauseVideo: () => void;
 };
 
-type SpotifyIframeApi = {
-  createController: (
+type YTNamespace = {
+  Player: new (
     element: HTMLElement,
-    options: { uri: string; width?: string; height?: string },
-    callback: (controller: SpotifyEmbedController) => void
-  ) => void;
+    options: {
+      height?: string;
+      width?: string;
+      videoId?: string;
+      playerVars?: Record<string, number | string>;
+      events?: {
+        onStateChange?: (e: { data: number }) => void;
+      };
+    }
+  ) => YTPlayerInstance;
+  PlayerState: { PLAYING: number; PAUSED: number; ENDED: number };
 };
 
 declare global {
   interface Window {
-    onSpotifyIframeApiReady?: (api: SpotifyIframeApi) => void;
+    onYouTubeIframeAPIReady?: () => void;
+    YT?: YTNamespace;
   }
 }
 
 export default function SoundToggle() {
   const holderRef = useRef<HTMLDivElement>(null);
-  const controllerRef = useRef<SpotifyEmbedController | null>(null);
-  const apiRef = useRef<SpotifyIframeApi | null>(null);
+  const playerRef = useRef<YTPlayerInstance | null>(null);
+  const playingRef = useRef(false);
   const trackRef = useRef({
-    uri: TRACK_URI,
-    title: "Bring Me The Horizon — In The Dark",
-    url: TRACK_URL,
+    videoId: DEFAULT_VIDEO_ID,
+    title: DEFAULT_TITLE,
+    url: DEFAULT_URL,
   });
   const [playing, setPlaying] = useState(false);
   const [apiBlocked, setApiBlocked] = useState(false);
-  const [pillTitle, setPillTitle] = useState(trackRef.current.title);
+  const [pillTitle, setPillTitle] = useState(DEFAULT_TITLE);
+
+  const setPlayingState = (p: boolean) => {
+    playingRef.current = p;
+    setPlaying(p);
+    publishSoundState(p);
+  };
 
   useEffect(() => {
     let cancelled = false;
 
-    const boot = (api: SpotifyIframeApi) => {
-      if (cancelled || controllerRef.current || !holderRef.current) return;
-      apiRef.current = api;
-      api.createController(
-        holderRef.current,
-        { uri: TRACK_URI, width: "1", height: "1" },
-        (controller) => {
-          if (cancelled) return;
-          controllerRef.current = controller;
-          controller.addListener("playback_update", (e) => {
-            const p = !e.data.isPaused;
-            setPlaying(p);
-            publishSoundState(p);
-          });
-        }
-      );
+    const boot = () => {
+      const YT = window.YT;
+      if (cancelled || playerRef.current || !holderRef.current || !YT) return;
+      playerRef.current = new YT.Player(holderRef.current, {
+        height: "1",
+        width: "1",
+        videoId: trackRef.current.videoId,
+        playerVars: { rel: 0, iv_load_policy: 3, disablekb: 1 },
+        events: {
+          onStateChange: (e) => {
+            const PS = window.YT?.PlayerState;
+            if (!PS) return;
+            if (e.data === PS.PLAYING) setPlayingState(true);
+            else if (e.data === PS.PAUSED || e.data === PS.ENDED)
+              setPlayingState(false);
+          },
+        },
+      });
     };
 
-    const w = window as unknown as Record<string, unknown>;
-    if (w.SpotifyIframeApi) {
-      boot(w.SpotifyIframeApi as SpotifyIframeApi);
+    if (window.YT?.Player) {
+      boot();
       return () => {
         cancelled = true;
       };
     }
 
-    const prev = w.onSpotifyIframeApiReady as
-      | ((api: SpotifyIframeApi) => void)
-      | undefined;
-    w.onSpotifyIframeApiReady = (api: SpotifyIframeApi) => {
-      if (typeof prev === "function") prev(api);
-      boot(api);
+    const prev = window.onYouTubeIframeAPIReady;
+    window.onYouTubeIframeAPIReady = () => {
+      if (typeof prev === "function") prev();
+      boot();
     };
 
     const script = document.createElement("script");
-    script.src = "https://open.spotify.com/embed/iframe-api/v1";
+    script.src = "https://www.youtube.com/iframe_api";
     script.async = true;
     script.onerror = () => {
       if (!cancelled) setApiBlocked(true);
     };
     document.body.appendChild(script);
     const timer = window.setTimeout(() => {
-      if (!cancelled && !controllerRef.current) setApiBlocked(true);
+      if (!cancelled && !playerRef.current) setApiBlocked(true);
     }, 9000);
 
     return () => {
       cancelled = true;
       window.clearTimeout(timer);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   /* The bottom-nav sound button routes through here. */
   useEffect(() => {
-    const onRequest = () => controllerRef.current?.togglePlay();
+    const onRequest = () => {
+      const p = playerRef.current;
+      if (!p) return;
+      if (playingRef.current) p.pauseVideo();
+      else p.playVideo();
+    };
     window.addEventListener("dexa:toggle-sound", onRequest);
     return () => window.removeEventListener("dexa:toggle-sound", onRequest);
   }, []);
 
-  /* The "On repeat" rows route through here: swap the embed to the
-     requested track (the IFrame API has no load-uri, so the controller
-     is recreated), then play it. */
+  /* The "On repeat" rows route through here: swap the video and play it.
+     loadVideoById autoplays; the click counts as the user gesture. */
   useEffect(() => {
     const onPlayTrack = (e: Event) => {
-      const { uri, title, url } = (e as CustomEvent<TrackRequest>).detail;
-      const api = apiRef.current;
-      const holder = holderRef.current;
-      if (apiBlocked || !api || !holder) {
+      const { videoId, title, url } = (e as CustomEvent<TrackRequest>).detail;
+      const p = playerRef.current;
+      if (apiBlocked || !p) {
         window.open(url, "_blank", "noopener,noreferrer");
         return;
       }
-      trackRef.current = { uri, title, url };
+      trackRef.current = { videoId, title, url };
       setPillTitle(title);
-      publishTrack(uri);
-      holder.innerHTML = "";
-      controllerRef.current = null;
-      api.createController(
-        holder,
-        { uri, width: "1", height: "1" },
-        (controller) => {
-          controllerRef.current = controller;
-          controller.addListener("playback_update", (ev) => {
-            const p = !ev.data.isPaused;
-            setPlaying(p);
-            publishSoundState(p);
-          });
-          controller.play();
-        }
-      );
+      publishTrack(videoId);
+      p.loadVideoById(videoId);
     };
     window.addEventListener("dexa:play-track", onPlayTrack);
     return () => window.removeEventListener("dexa:play-track", onPlayTrack);
   }, [apiBlocked]);
 
   const toggle = useCallback(() => {
-    const c = controllerRef.current;
-    if (c) {
-      c.togglePlay();
+    const p = playerRef.current;
+    if (p) {
+      if (playingRef.current) p.pauseVideo();
+      else p.playVideo();
     } else if (apiBlocked) {
-      /* Spotify embed blocked (e.g. ad-blocker): open the track instead. */
+      /* YouTube API blocked (e.g. ad-blocker): open the video instead. */
       window.open(trackRef.current.url, "_blank", "noopener,noreferrer");
     }
   }, [apiBlocked]);
 
   return (
     <>
-      <div ref={holderRef} className="spotify-holder" aria-hidden="true" />
+      <div ref={holderRef} className="youtube-holder" aria-hidden="true" />
       <button
         type="button"
         className={`sound-pill${playing ? " playing" : ""}`}

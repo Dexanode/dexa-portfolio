@@ -402,7 +402,7 @@ html[data-theme="light"] .mark-light {
 }
 
 /* hidden Spotify embed that actually plays the track */
-.spotify-holder {
+.youtube-holder {
   position: fixed;
   left: 0;
   bottom: 0;

@@ -1,5 +1,5 @@
 /* Tiny pub/sub so the header SoundToggle and the bottom-nav sound button
-   stay in sync while a single Spotify controller owns playback. */
+   stay in sync while a single YouTube player owns playback. */
 
 type SoundListener = (playing: boolean) => void;
 
@@ -22,7 +22,7 @@ export function requestSoundToggle(): void {
 
 /* ---- current-track pub/sub (drives the "On repeat" rows) ---- */
 
-export type TrackRequest = { uri: string; title: string; url: string };
+export type TrackRequest = { videoId: string; title: string; url: string };
 
 type TrackListener = (uri: string) => void;
 

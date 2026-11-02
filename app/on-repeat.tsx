@@ -10,39 +10,39 @@ import {
 } from "./sound-bus";
 import { t } from "./copy";
 
-type Track = { uri: string; title: string; meta: string; url: string };
+type Track = { videoId: string; title: string; meta: string; url: string };
 
-/* Track IDs verified via Spotify oEmbed, 2026-10-31. */
+/* Video IDs verified via YouTube oEmbed (official BMTH VEVO uploads), 2026-11-02. */
 const TRACKS: Track[] = [
   {
-    uri: "spotify:track:4swVflM7KtMxzfHBWqPv9S",
+    videoId: "Thazgd1HFus",
     title: "in the dark",
     meta: "amo · 2019",
-    url: "https://open.spotify.com/track/4swVflM7KtMxzfHBWqPv9S",
+    url: "https://www.youtube.com/watch?v=Thazgd1HFus",
   },
   {
-    uri: "spotify:track:5DNMDU7gxgmRyD9XwVVVl5",
-    title: "Can You Feel My Heart",
-    meta: "Sempiternal · 2013",
-    url: "https://open.spotify.com/track/5DNMDU7gxgmRyD9XwVVVl5",
+    videoId: "L5uV3gmOH9g",
+    title: "Teardrops",
+    meta: "POST HUMAN: SURVIVAL HORROR · 2020",
+    url: "https://www.youtube.com/watch?v=L5uV3gmOH9g",
   },
   {
-    uri: "spotify:track:4OpmC94xXTITiYKfNJtHrb",
-    title: "Throne",
-    meta: "That's the Spirit · 2015",
-    url: "https://open.spotify.com/track/4OpmC94xXTITiYKfNJtHrb",
+    videoId: "3Nt37RGbVjo",
+    title: "DArkSide",
+    meta: "POST HUMAN: NeX GEn · 2024",
+    url: "https://www.youtube.com/watch?v=3Nt37RGbVjo",
   },
   {
-    uri: "spotify:track:6o39Ln9118FKTMbM4BvcEy",
-    title: "Drown",
-    meta: "That's the Spirit · 2015",
-    url: "https://open.spotify.com/track/6o39Ln9118FKTMbM4BvcEy",
+    videoId: "xv-70a6yXfM",
+    title: "LosT",
+    meta: "POST HUMAN: NeX GEn · 2023",
+    url: "https://www.youtube.com/watch?v=xv-70a6yXfM",
   },
   {
-    uri: "spotify:track:5fpq1wF8xa5tSSlcKHdmGQ",
+    videoId: "FsNGxsrcZas",
     title: "sTraNgeRs",
     meta: "single · 2022",
-    url: "https://open.spotify.com/track/5fpq1wF8xa5tSSlcKHdmGQ",
+    url: "https://www.youtube.com/watch?v=FsNGxsrcZas",
   },
 ];
 
@@ -64,11 +64,11 @@ function PauseIcon() {
 }
 
 export default function OnRepeat() {
-  const [currentUri, setCurrentUri] = useState<string | null>(null);
+  const [currentId, setCurrentId] = useState<string | null>(null);
   const [playing, setPlaying] = useState(false);
 
   useEffect(() => {
-    const offTrack = subscribeTrack(setCurrentUri);
+    const offTrack = subscribeTrack(setCurrentId);
     const offSound = subscribeSound(setPlaying);
     return () => {
       offTrack();
@@ -77,11 +77,11 @@ export default function OnRepeat() {
   }, []);
 
   const onPlay = (tr: Track) => {
-    if (currentUri === tr.uri) {
+    if (currentId === tr.videoId) {
       requestSoundToggle();
     } else {
       requestSoundTrack({
-        uri: tr.uri,
+        videoId: tr.videoId,
         title: `Bring Me The Horizon — ${tr.title}`,
         url: tr.url,
       });
@@ -102,11 +102,11 @@ export default function OnRepeat() {
       <Reveal delay={160}>
         <ol className="track-list">
           {TRACKS.map((tr, i) => {
-            const active = currentUri === tr.uri;
+            const active = currentId === tr.videoId;
             const showPause = active && playing;
             return (
               <li
-                key={tr.uri}
+                key={tr.videoId}
                 className={`track-row${active ? " active" : ""}`}
               >
                 <button
@@ -146,7 +146,7 @@ export default function OnRepeat() {
                   href={tr.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={`Open ${tr.title} on Spotify`}
+                  aria-label={`Open ${tr.title} on YouTube`}
                 >
                   <span aria-hidden="true">↗</span>
                 </a>
