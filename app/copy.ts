@@ -78,7 +78,7 @@ export const t = {
   expTitle: "Roles",
   experience: [
     {
-      role: "Customer Support Technical",
+      role: "Customer Support",
       org: "Dawn Trade",
       dates: "October 2026 – Present",
       points: [
