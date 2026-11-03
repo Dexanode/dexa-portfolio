@@ -89,7 +89,7 @@ export const t = {
     {
       role: "Community Manager",
       org: "Starfish Finance",
-      dates: "May 2022 – Present",
+      dates: "May 2022 – 2024",
       points: [
         "Help answer all questions and receive feedback from the community",
         "Building community trust and running events",
