@@ -104,7 +104,7 @@ function SiteMain() {
           </span>
           <span aria-hidden="true">·</span>
           <span>
-            <strong>14</strong> ambassador programs
+            <strong>15</strong> ambassador programs
           </span>
         </div>
       </section>
@@ -144,7 +144,7 @@ function SiteMain() {
             </div>
             <div className="about-stat">
               <div className="band-stat-num">
-                <CountUp to={14} />
+                <CountUp to={15} />
               </div>
               <div className="band-stat-label">{t.aboutStat2Label}</div>
             </div>
@@ -220,7 +220,7 @@ function SiteMain() {
         <Reveal delay={120}>
           <div className="amb-marquee" role="list" aria-label={`${t.ambTitle} — row 1`}>
             <div className="amb-track">
-              {[...ambassadors.slice(0, 7), ...ambassadors.slice(0, 7)].map((amb, i) => (
+              {[...ambassadors.slice(0, 8), ...ambassadors.slice(0, 8)].map((amb, i) => (
                 <span className="amb-logo" role="listitem" key={`a-${i}`} data-name={amb.name}>
                   {amb.logo ? (
                     <img
@@ -244,7 +244,7 @@ function SiteMain() {
           </div>
           <div className="amb-marquee" role="list" aria-label={`${t.ambTitle} — row 2`}>
             <div className="amb-track rev">
-              {[...ambassadors.slice(7), ...ambassadors.slice(7)].map((amb, i) => (
+              {[...ambassadors.slice(8), ...ambassadors.slice(8)].map((amb, i) => (
                 <span className="amb-logo" role="listitem" key={`b-${i}`} data-name={amb.name}>
                   {amb.logo ? (
                     <img

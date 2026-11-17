@@ -128,6 +128,7 @@ export const ambassadors: Array<{
   { name: "OKX", logo: "/logos/ambassador/okx.svg" },
   { name: "Orbinum", logo: "/logos/ambassador/orbinum.svg", logoInvertLight: true },
   { name: "OSL", logo: "/logos/ambassador/osl.svg" },
+  { name: "BingX", logo: "/logos/ambassador/bingx.svg", logoInvertLight: true },
 ];
 
 /** Validator networks — logos supplied by the user via Google Drive (Empower excluded per request). */
